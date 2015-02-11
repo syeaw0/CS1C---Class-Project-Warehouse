@@ -1,0 +1,20 @@
+***********************************
+*SALES REPORT FOR <Date goes here>*
+***********************************
+
+ITEM                    QUANTITY        COST    BOUGHT BY
+---------------------   -------------  ------- -------------------
+1. <Item name 1>        <Quantity>      <Price> <Member Name>
+2. <Item name 2>        <Quantity>      <Price> <Member Name>
+3. <....    >
+.
+.
+.
+------------------------------------------------------
+
+TOTAL NUMBER OF MEMBERS
+-----------------------
+BASIC:      <Number of basic members>
+PREFERRED:  <Number of preferred members>
+
+TOTAL REVENUE: <Revenue amount>

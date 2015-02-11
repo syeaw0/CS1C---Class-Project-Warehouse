@@ -1,0 +1,18 @@
+************************
+*MEMBER PURCHASE REPORT*
+************************
+
+NAME:   <Member name>
+ID:     <Member ID>
+
+PURCHASES BY THIS MEMBER
+ITEM                 QUANTITY       COST
+------------------- -------------  -------- 
+1. <Item name>       <Quantity>     <Price of item>
+2. <.... >
+.
+.
+.
+---------------------------------
+
+TOTAL PURCHASES: <Total number of purchases>
