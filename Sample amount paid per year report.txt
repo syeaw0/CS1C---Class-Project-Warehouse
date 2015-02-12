@@ -1,0 +1,7 @@
+******************************************************
+*            AMOUNT PAID PER MEMBER REPORT 
+******************************************************
+
+Member Type         Member Name         Amount Per Year      
+-----------         -----------         ----------------
+<member type>       <Member Name>       <amount paid per year>
