@@ -1,0 +1,7 @@
+1. As a manager I would like to see the wuantity of items sold/
+	* Must be sorted by the items name
+
+2. As a manager I would like to see the rebate of all the preferred members.
+	* Must be sorted by their id number
+	* Rebate does not include sales tax
+	* Rebate of 6% of the total amount spent
