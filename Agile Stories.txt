@@ -1,1 +1,15 @@
 Agile Stories
+TEMPLATE: 
+#x  - ...
+  a. Story Point:  Xpts  -TeamMember
+  b. Priority:  1-High 10-Low (ie. 3 -TeamMember)
+  c. Tasks and Tests: "Description of specific task and test 
+                        inside a text block" -TeamMember
+                        
+  d. Finished Condition: "Opinion: Finished condition when x is fulfilled" -TeamMember
+
+#3 - As a manager, I would like to know the total amount of purchased items from premium/preferred members
+in an organized list. At the end of the list I would like to see the grand total of purchases.
+  a. Story Point: 5pts -Dan
+  
+  b. Priority:  5 -Dan 
