@@ -18,6 +18,17 @@ in an organized list. At the end of the list I would like to see the grand total
                      To test the organized list, we need a sortting function/method that will sort ID numbers in numeric order.
                      -Dan
   d. Finished Condition: All above tests and methods will work together to spit out a simple output.
+  
+#4 - As a manager, I would like to be able to enter an item name and get the quantity of that item sold as well
+as its total price sold for that specific item.
+  a. Story Point: 2pts -Dan
+  b. Priority: 5 -Dan
+  c. Tasks and Tests: Create a function/method that gets the item name and then output how many were sold then
+					  we could total it up. Most likely either requires a two-step process for searching the item
+					  then getting its price and tallying it up.
+					  Check all items(?)
+  d. Finished Condition: All of the above implementation should be functional.
+
 ====================================
   
 #7 - As a manager, I want to create a detailed list of the amount of money paid for by each store member 
