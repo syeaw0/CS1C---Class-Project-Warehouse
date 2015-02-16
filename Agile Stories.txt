@@ -1,5 +1,5 @@
 Agile Stories
-TEMPLATE: 
+				TEMPLATE: 
 #x  - ...
   a. Story Point:  Xpts  -TeamMember
   b. Priority:  1-High 10-Low (ie. 3 -TeamMember)
@@ -30,7 +30,22 @@ as its total price sold for that specific item.
   d. Finished Condition: All of the above implementation should be functional.
 
 ====================================
-  
+
+#5 - As a manager I would like to see the quantity of items sold/
+	a. Story Point: <Democracy needed>
+	b. Priority: <Democracy vote needed>
+	c. Tasks and Tests: Must be sorted by the items name
+	d. Finished Condition: <Update this>
+
+#6 - As a manager I would like to see the rebate of all the preferred members.
+	a. Story Point: <Democracy needed>
+	b. Priority: <Democracy needed>
+	c. Tasks and Tests: * Must be sorted by their id number
+						* Rebate does not include sales tax
+						* Rebate of 6% of the total amount spent
+	d. Finished Condition: <Update this>
+	
+==========================
 #7 - As a manager, I want to create a detailed list of the amount of money paid for by each store member 
 every year and sorted by member type so that we can see how much each member’s payment is due. 
   a. Estimation: 4
@@ -48,7 +63,8 @@ the end of the month so that we can see how much payment is due
         i. Should be properly formatted
         ii. Test if the month outputs appropriate membership expiring and amount due
   d. Definition of Done: The user can see which memberships expire and the amount due in a formatted way. 
-
+  
+=============================
 #10 - As a manager, I want to be able to see if a basic member should upgrade to preferred members so that we 
 can start charging them membership. 
   a. Estimation: 2 
