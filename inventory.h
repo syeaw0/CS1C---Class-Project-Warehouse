@@ -10,7 +10,7 @@
 
 #ifndef INVENTORY_H_
 #define INVENTORY_H_
-
+#include "c_item.h"
 
 class inventory
 {
@@ -25,6 +25,7 @@ class inventory
 
 	private:
 		int numberOfItems;
+		item *head; 
 };
 
 
