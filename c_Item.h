@@ -27,8 +27,8 @@ public:
 	void SetItemPrice(float thePrice);
 	void SetItemQuantity(int theQuantity);
 	void SetPurchaseID(int theBuyerID);
-	//void SetDatePurchased(BLANK FIELD)	UNKNOWN IMPLEMENTATION
-	//void SetNextItem(BLANK FIELD)	UNKNOWN IMPLEMENTATION
+	void SetDatePurchased(int day, int month, int year);
+	void SetNextItem(Item *itemHead);
 
 	/*************
 	 * Accessors *
@@ -37,8 +37,8 @@ public:
 	float GetPrice() const;
 	int GetQuantity() const;
 	int GetBuyerID() const;
-	//void GetDatePurchased() const; UNKNOWN RETURN METHODS
-	//Items nextItem() const;	UNKNOWN RETURN TYPE
+	void GetDatePurchased() const;
+	Item GetNextItem();
 
 private:
 
