@@ -65,19 +65,19 @@ as its total price sold for that specific item overall.
 
 ====================================
 
-#5 - As a manager I would like to see the quantity of items sold by name.
-	a. Story Point: 2pts -All Member
-	b. Priority: 7 -All Members
+#5 - As a manager I would like to see the quantity of items sold
+	a. Story Point: 3 - jacob
+	b. Priority: 6    - jacob
 	c. Tasks and Tests: Must be sorted by the items name
-	d. Finished Condition: <Update this>
+	d. Finished Condition: The number of items sold must be output
 
-#6 - As a manager I would like to see the rebate of all the preferred members sorted by membership ID.
-	a. Story Point: 2pt -All Members
-	b. Priority: 666 -All Members
+#6 - As a manager I would like to see the rebate of all the preferred members.
+	a. Story Point: 3 - jacob
+	b. Priority: 6    - jacob
 	c. Tasks and Tests: * Must be sorted by their id number
-						* Rebate does not include sales tax
-						* Rebate of 6% of the total amount spent
-	d. Finished Condition: <Update this>
+			    * Rebate does not include sales tax
+			    * Rebate of 6% of the total amount spent
+	d. Finished Condition: A list of preffered member ids must be printed out along with their rebate
 	
 ==========================
 #7 - As a manager, I want to create a detailed list of the amount of money paid for by each store member 
