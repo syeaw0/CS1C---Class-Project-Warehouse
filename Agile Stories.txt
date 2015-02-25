@@ -1,18 +1,52 @@
-Agile Stories
-				TEMPLATE: 
-#x  - ...
-  a. Story Point:  Xpts  -TeamMember
+/*************************************************************************
+ * AUTHOR 	: Daniel Phan, Samuel Yeaw, Arman Jafarinia, Jacob McIver
+ * STUDENT ID 	: 243390
+ * Class Project: Ralph's Club Membership RipOff AGILE STORIES
+ * CLASS 	: CS1C
+ * SECTION 	: TTh 12:30PM - 4:20PM
+ * DUE DATE 	: 3/17/15
+ ***************************************************************************/
+TEMPLATE: 
+#x  As a user of this program, I'd like to see the name of this program, what this program will do, as well as a menu of options listed beneath- ...
+  a. Story Point:  1-Simple Base 10-Highest Complex Xpts  -TeamMember
   b. Priority:  1-High 10-Low (ie. 3 -TeamMember)
   c. Tasks and Tests: "Description of specific task and test 
                         inside a text block" -TeamMember
                         
   d. Finished Condition: "Opinion: Finished condition when x is fulfilled" -TeamMember
-====================================
-#3 - As a manager, I would like to know the total amount of purchased items from premium/preferred members
-in an organized list. At the end of the list I would like to see the grand total of purchases.
-  a. Story Point: 5pts -Dan
   
-  b. Priority:  3 -Dan 
+====================================
+
+#1 - As a manager, I would like to see a sales report of which items were sold for a particular day, their quantity, who
+bought them, and the total revenue gained.
+	a. Story Point: 	7-8pts -All Members
+	b. Priority:		1 -All members
+	c. Tasks and Tests:	- Gain list of items and quantities sold on a particular day
+				- Gain list of members who bought them
+				- Calculate the total revenue gained for that day
+				- Calculate the number of preferred and basic members
+				- Output this information
+	d. Finished Condition:	This story is finished when all tasks have been completed, tested, and shown to be 
+				successfull. 
+				
+#2 - As a manager, I would like to be able to pull up a report on any member and see the items they purchased, the quantity
+of items purchased, as well as the cost of those items. I would like to see the total number of purchases listed, as well as the
+status and name of that member (basic or preferred).
+	a. Story Point:		7pt -All members
+	b. Priority:		2 -All Members
+	c. Tasks and Tests:	- Search for specific member based on name or number
+				- List each item purchased by members as well as the quantity and cost of the item
+				- The total number of purchases
+				- Output all information
+	d. Finished Conditions:	This story is finished when the program is capable of outputing this information correctly
+	
+===================================
+
+#3 - As a manager, I would like to know the total amount of purchased items from basic/preferred members
+in a sorted list by member ID. At the end of the list I would like to see the grand total of purchases.
+  a. Story Point: 5pts -All Members
+  
+  b. Priority:  4 -All Members 
   c. Task and Tests: Let's implement the item's class and then create an test that randomly generates item prices.
                      To test the grand total, a function/method must total up all prices while reading down a list.
                      To test the organized list, we need a sortting function/method that will sort ID numbers in numeric order.
@@ -20,9 +54,9 @@ in an organized list. At the end of the list I would like to see the grand total
   d. Finished Condition: All above tests and methods will work together to spit out a simple output.
   
 #4 - As a manager, I would like to be able to enter an item name and get the quantity of that item sold as well
-as its total price sold for that specific item.
-  a. Story Point: 2pts -Dan
-  b. Priority: 5 -Dan
+as its total price sold for that specific item overall.
+  a. Story Point:  3pt -All Members
+  b. Priority: 5 -All Members
   c. Tasks and Tests: Create a function/method that gets the item name and then output how many were sold then
 					  we could total it up. Most likely either requires a two-step process for searching the item
 					  then getting its price and tallying it up.
@@ -31,44 +65,55 @@ as its total price sold for that specific item.
 
 ====================================
 
-#5 - As a manager I would like to see the quantity of items sold/
-	a. Story Point: <Democracy needed>
-	b. Priority: <Democracy vote needed>
+#5 - As a manager I would like to see the quantity of items sold
+	a. Story Point: 3 - jacob
+	b. Priority: 6    - jacob
 	c. Tasks and Tests: Must be sorted by the items name
-	d. Finished Condition: <Update this>
+	d. Finished Condition: The number of items sold must be output
 
 #6 - As a manager I would like to see the rebate of all the preferred members.
-	a. Story Point: <Democracy needed>
-	b. Priority: <Democracy needed>
+	a. Story Point: 3 - jacob
+	b. Priority: 6    - jacob
 	c. Tasks and Tests: * Must be sorted by their id number
-						* Rebate does not include sales tax
-						* Rebate of 6% of the total amount spent
-	d. Finished Condition: <Update this>
+			    * Rebate does not include sales tax
+			    * Rebate of 6% of the total amount spent
+	d. Finished Condition: A list of preffered member ids must be printed out along with their rebate
 	
 ==========================
 #7 - As a manager, I want to create a detailed list of the amount of money paid for by each store member 
 every year and sorted by member type so that we can see how much each member’s payment is due. 
-  a. Estimation: 4
-  b. Priority: 5
+  a. Estimation: 5pts -All members
+  b. Priority: 5 -All Member
   c. Tasks and Tests: 
         i. Should have a properly formatted output
         ii. Should have the list sorted by members
   d. Definition of Done: The list is properly sorted and formatted in a clean way. 
 
 #8 - As a manager, I want to be able to enter in a month and see what members have their memberships expiring at 
-the end of the month so that we can see how much payment is due 
-  a. Estimation: 4
-  b. Priority 4
+the end of the month so that we can see how much payment is due for that member.
+  a. Estimation: 3pts -All members
+  b. Priority: 6 -All Members
   c. Tasks and Tests: 
         i. Should be properly formatted
         ii. Test if the month outputs appropriate membership expiring and amount due
   d. Definition of Done: The user can see which memberships expire and the amount due in a formatted way. 
   
 =============================
+
+#9 - As a manager, I want to able to add or delete members so that I have control over the accepted members of the store.
+	a. Story Point:			5pts -All Members
+	b. Priority:			8 -All Members
+	c. Tasks and Tests:		- Be able to add/delete members
+					- Save between executions
+					- Create purchases for new members to validate code
+	d. Finished Condition:		The user can add or delete members and the changes are correctly saved
+	
+=============================
+
 #10 - As a manager, I want to be able to see if a basic member should upgrade to preferred members so that we 
 can start charging them membership. 
-  a. Estimation: 2 
-  b. Priority 9
+  a. Estimation:  5pts -All members
+  b. Priority: 9 -All Members
   c. Tasks and Tests: 
         i. Properly formatted output 
         ii. Test if the user upgrades their membership
