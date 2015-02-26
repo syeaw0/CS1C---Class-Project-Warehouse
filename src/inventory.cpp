@@ -7,30 +7,30 @@
  * DUE DATE   		 :
  * ***********************************************************************/
 
-#include "inventory.h"
+#include "Inventory.h"
 
-inventory::inventory()
+Inventory::Inventory()
 {
 	numberOfItems=0;
 	head=NULL;
 }
 
-inventory::~inventory()
+Inventory::~Inventory()
 {
 	//No code
 }
 
-void inventory::SetNumberOfItems(int amountOfItems)
+void Inventory::SetNumberOfItems(int amountOfItems)
 {
 	numberOfItems=amountOfItems;
 }
 
-void inventory::readInFile()
+void Inventory::readInFile()
 {
 
 }
 
-int inventory::GetNumberOfItems()
+int Inventory::GetNumberOfItems()
 {
 	return numberOfItems;
 }
