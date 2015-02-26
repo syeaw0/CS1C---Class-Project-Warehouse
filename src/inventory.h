@@ -10,13 +10,13 @@
 
 #ifndef INVENTORY_H_
 #define INVENTORY_H_
-#include "c_item.h"
+#include "c_Item.h"
 
-class inventory
+class Inventory
 {
 	public:
-		inventory();				//constructor
-		~inventory();				//destructor
+		Inventory();				//constructor
+		~Inventory();				//destructor
 
 		void SetNumberOfItems(int amountOfNumbers);
 		void readInFile();
@@ -25,7 +25,7 @@ class inventory
 
 	private:
 		int numberOfItems;
-		item *head; 
+		Item *head;
 };
 
 

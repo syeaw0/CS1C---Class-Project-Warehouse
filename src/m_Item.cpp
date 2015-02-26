@@ -15,7 +15,7 @@ Item::Item()
 	itemQuantity = 0;
 	buyerID = 0;
 	purchaseDate.SetDate(1, 1, 1970);
-	nextItem = NULL;
+	nextItemPtr = NULL;
 }
 
 //Default Destructor
@@ -48,7 +48,7 @@ void Item::SetDatePurchased(int day, int month, int year)
 
 void Item::SetNextItem(Item *nextNode)
 {
-	nextNode = nextItem;		//TODO fix method if necessary
+	nextItemPtr = nextNode;		//TODO fix method if necessary
 }
 
 //***Accessors***
@@ -74,11 +74,10 @@ void Item::GetDatePurchased() const
 	purchaseDate.Print();
 	//THIS WILL PRINT OUT SOMETHING
 	//WOULD WE NEED IT TO DO THAT OR RETURN AN ACTUAL DATE VALUE(S)?
-
 }
 
-/*Item Item::nextItem(Item *head)
+Item *Item::GetNextItem() const
 {
-	head = NULL;	//TODO IMPLEMENT ACTUAL FUNCTION
+	return nextItemPtr;
 }
-*/
+

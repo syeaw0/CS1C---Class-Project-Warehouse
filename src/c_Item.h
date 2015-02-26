@@ -10,6 +10,7 @@
 #define C_ITEM_H_
 
 #include <string>
+#include "Date.h"
 
 using namespace std;
 
@@ -38,7 +39,7 @@ public:
 	int GetQuantity() const;
 	int GetBuyerID() const;
 	void GetDatePurchased() const;
-	Item GetNextItem();
+	Item *GetNextItem() const;
 
 private:
 
@@ -47,7 +48,7 @@ private:
 	int itemQuantity;
 	int buyerID;
 	Date purchaseDate;
-	Item *nextItem;
+	Item *nextItemPtr;
 
 };
 #endif /* C_ITEM_H_ */
