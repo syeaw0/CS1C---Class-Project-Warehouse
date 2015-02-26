@@ -1,0 +1,14 @@
+/**********************************
+*
+*
+*		SAMPLE OUTPUT 
+*
+*
+***********************************/
+
+Please Enter a Month: January
+
+
+MEMBERS   		EXPERIATION DATE     AMOUNT DUE
+-------    		----------------     ----------
+<Membername>	 <experationDate>    <amountDue>
