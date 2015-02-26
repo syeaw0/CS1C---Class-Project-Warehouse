@@ -12,6 +12,7 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -23,23 +24,13 @@ class memberList
 
 	memberList();
 
-	string SetName(string addName);
-
-	int SetId(int addName);
-
-	string SetMembership(string addMemberShip);
-
-	string SetExpiration(string addExpiration);
-
-
-	void AddMember(string addName, int addId, string addMembership,
-					string addExpiration);
+	void AddMember();
 
 	void DeleteMember(string deleteName);
 
 	void PrintList();
 
-	void GetFileName();
+	void GetFileName(string fileName);
 
 
 
@@ -56,7 +47,8 @@ class memberList
 	memberInfo *head;
 	memberInfo *curr;
 	memberInfo *temp;
-
+	string fileName;
+	ifstream inFile;
 
 };
 
