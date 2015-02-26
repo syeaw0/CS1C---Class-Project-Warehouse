@@ -21,17 +21,16 @@ using namespace std;
 		temp = NULL;
 	}
 
-	void memberList :: AddMember(string addName, int addId,
-								 string addMembership,
-								 string addExpiration)
+	void memberList :: AddMember()
 	{
 		memberInfo *memberPtr = new memberInfo;
 
 		//CALC - assigns variables to struct members
-		memberPtr -> name = addName;
-		memberPtr -> id = addId;
-		memberPtr -> membership = addMembership;
-		memberPtr -> expiration = addExpiration;
+		getline(inFile, memberPtr -> name);
+		inFile >> memberPtr -> id;
+		inFile.ignore(1000, '\n');
+		getline(inFile, memberPtr -> membership);
+		getline(inFile, memberPtr -> expiration);
 
 		//CALC - links new node to stack
 		memberPtr -> next = head;
@@ -57,4 +56,10 @@ using namespace std;
 			cout << curr->expiration << endl << endl;
 			curr = curr->next;
 		}
+	}
+
+
+	void memberList :: GetFileName(string fileName)
+	{
+		inFile.open(fileName.c_str());
 	}
