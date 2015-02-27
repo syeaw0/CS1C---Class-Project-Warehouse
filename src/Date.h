@@ -1,11 +1,32 @@
-
+/*************************************************
+* AUTHOR 		: Daniel Phan, Samuel Yeaw,
+* 				  Arman Jafarinia, Jacob McIver
+* STUDENT ID 	: 243390
+* Class Project	: Warehouse Class Project
+* CLASS 		: CS1C
+* SECTION 		: TTh 12:30PM - 4:20PM
+* DUE DATE 		: 3/17/15
+**************************************************/
 
 #ifndef DATE_H_
 #define DATE_H_
 
 // PRE-PROCESSOR DIRECTIVES
 
+/*************************************************
+* AUTHOR 		: Daniel Phan, Samuel Yeaw,
+* 				  Arman Jafarinia, Jacob McIver
+* STUDENT ID 	: 243390
+* Class Project	: Warehouse Class Project
+* CLASS 		: CS1C
+* SECTION 		: TTh 12:30PM - 4:20PM
+* DUE DATE 		: 3/17/15
+**************************************************/
+
 #include <iostream>
+#include <fstream>
+#include <cstring>
+#include <cstdlib>
 using namespace std;
 
 /*********************************************************
@@ -44,6 +65,7 @@ public:
 
 	// MUTATORS
 
+	void SetDate(ifstream& inFile);
 	void SetDate(int aDay,
 				 int aMonth,
 				 int aYear);
