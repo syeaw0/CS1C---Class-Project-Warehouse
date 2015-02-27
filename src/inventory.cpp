@@ -7,30 +7,65 @@
  * DUE DATE   		 :
  * ***********************************************************************/
 
-#include "Inventory.h"
-
-Inventory::Inventory()
+#include "inventory.h"
+#include <fstream>
+#include <ios>
+#include <limits>
+inventory::inventory()
 {
 	numberOfItems=0;
 	head=NULL;
 }
 
-Inventory::~Inventory()
+inventory::~inventory()
 {
 	//No code
 }
 
-void Inventory::SetNumberOfItems(int amountOfItems)
+void inventory::SetNumberOfItems(int amountOfItems)
 {
 	numberOfItems=amountOfItems;
 }
 
-void Inventory::readInFile()
+void inventory::readInFile(ifstream inFile, string inFileName)
 {
+	Item *itemPtr;
+	int month;
+	int day;
+	int year;
+	int memberId;
+	string itemName;
+	float cost;
+	int quantity;
 
+	inFile.open(inFileName.c_str());
+
+	itemPtr=new Item;
+	while(inFile && itemPtr!=NULL)
+	{
+		inFile >> month;
+		inFile.ignore(numeric_limits<streamsize>::max(), '/');
+		inFile >> day;
+		inFile.ignore(numeric_limits<streamsize>::max(), '/');
+		inFile >> year;
+		itemPtr->SetDatePurchased(day, month, year);
+		inFile >> memberId;
+		itemPtr->SetPurchaseID(memberId);
+		inFile.ignore(numeric_limits<streamsize>::max(),'\n');
+		getline(inFile, itemName);
+		inFile >> cost;
+		inFile >> quantity;
+		inFile.ignore(numeric_limits<streamsize>::max(), '\n');
+		itemPtr->SetNextItem(head);
+		head=itemPtr;
+		itemPtr=new Item;
+	}
+
+	delete itemPtr;
+	itemPtr=NULL;
 }
 
-int Inventory::GetNumberOfItems()
+int inventory::GetNumberOfItems()
 {
 	return numberOfItems;
 }
