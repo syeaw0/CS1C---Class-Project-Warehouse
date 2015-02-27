@@ -62,7 +62,6 @@ public:
 
 	// MUTATORS
 
-	void LoadMember(ifstream &inFile);
 	void SetName(string aName);
 	void SetId(int anId);
 	void SetExpiration(Date aDate);

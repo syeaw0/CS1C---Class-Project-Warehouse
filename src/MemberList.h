@@ -1,11 +1,11 @@
 /**************************************************************************
-* AUTHOR        : Jacob Mc'Iver
-* STUDENT ID    : 265933
-* Assignment #  : Group Project
-* CLASS         : MW 12:30pm - 4:20pm
-* SECTION       : CS1C
-* DUE DATE      : 3//2015
-**************************************************************************/
+ * AUTHOR        : Jacob Mc'Iver
+ * STUDENT ID    : 265933
+ * Assignment #  : Group Project
+ * CLASS         : MW 12:30pm - 4:20pm
+ * SECTION       : CS1C
+ * DUE DATE      : 3//2015
+ **************************************************************************/
 
 #ifndef MEMBERLIST_H_
 #define MEMBERLIST_H_
@@ -13,16 +13,18 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include "Preferred.h"
 
 using namespace std;
 
-class memberList
+class MemberList
 {
-	public:
+public:
 
 	/*METHODS*/
 
-	memberList();
+	MemberList();
+	~MemberList();
 
 	void AddMember();
 
@@ -32,9 +34,9 @@ class memberList
 
 	void GetFileName(string fileName);
 
+	Basic* SearchMember(int anId);
 
-
-	private:
+private:
 	struct memberInfo
 	{
 		string name;
@@ -51,6 +53,5 @@ class memberList
 	ifstream inFile;
 
 };
-
 
 #endif /* MEMBERLIST_H_ */

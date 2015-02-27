@@ -7,26 +7,29 @@
  * DUE DATE   		 : 
  * ***********************************************************************/
 
-
 #ifndef INVENTORY_H_
 #define INVENTORY_H_
 #include "c_Item.h"
 
 class Inventory
 {
-	public:
-		Inventory();				//constructor
-		~Inventory();				//destructor
+public:
+	/*METHODS*/
+	Inventory();				//constructor
+	~Inventory();				//destructor
 
-		void SetNumberOfItems(int amountOfNumbers);
-		void readInFile();
+	// MUTATORS
+	void SetNumberOfItems(int amountOfNumbers);
+	void readInFile();
 
-		int GetNumberOfItems();
+	// ACCESSORS
+	Item*	GetHead()			const;
+	int 	GetNumberOfItems()	const;
 
-	private:
-		int numberOfItems;
-		Item *head;
+private:
+	/*ATTRIBUTES*/
+	int numberOfItems;
+	Item *head;
 };
-
 
 #endif /* INVENTORY_H_ */

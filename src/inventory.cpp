@@ -11,8 +11,8 @@
 
 Inventory::Inventory()
 {
-	numberOfItems=0;
-	head=NULL;
+	numberOfItems	= 0;
+	head 			= NULL;
 }
 
 Inventory::~Inventory()
@@ -22,7 +22,7 @@ Inventory::~Inventory()
 
 void Inventory::SetNumberOfItems(int amountOfItems)
 {
-	numberOfItems=amountOfItems;
+	numberOfItems = amountOfItems;
 }
 
 void Inventory::readInFile()
@@ -30,7 +30,12 @@ void Inventory::readInFile()
 
 }
 
-int Inventory::GetNumberOfItems()
+Item*	Inventory::GetHead()			const
+{
+	return head;
+}
+
+int 	Inventory::GetNumberOfItems()	const
 {
 	return numberOfItems;
 }
