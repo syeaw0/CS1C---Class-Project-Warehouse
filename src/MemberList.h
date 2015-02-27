@@ -23,6 +23,7 @@ public:
 	/*METHODS*/
 
 	MemberList();
+	~MemberList();
 
 	void AddMember();
 
@@ -31,6 +32,8 @@ public:
 	void PrintList();
 
 	void GetFileName(string fileName);
+
+	Basic* SearchMember(int anId);
 
 private:
 	struct memberInfo

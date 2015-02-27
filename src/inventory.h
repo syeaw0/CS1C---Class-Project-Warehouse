@@ -14,15 +14,20 @@
 class Inventory
 {
 public:
+	/*METHODS*/
 	Inventory();				//constructor
 	~Inventory();				//destructor
 
+	// MUTATORS
 	void SetNumberOfItems(int amountOfNumbers);
 	void readInFile();
 
-	int GetNumberOfItems();
+	// ACCESSORS
+	Item*	GetHead()			const;
+	int 	GetNumberOfItems()	const;
 
 private:
+	/*ATTRIBUTES*/
 	int numberOfItems;
 	Item *head;
 };
