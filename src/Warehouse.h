@@ -45,6 +45,7 @@ public:
 
 	// ACCESSORS
 	void PrintSalesReport(Date aDate);
+	void PrintMemberPurchaseReport(Basic aMember);
 };
 
 #endif /* WAREHOUSE_H_ */

@@ -43,7 +43,7 @@ Warehouse::~Warehouse()
 void Warehouse::PrintSalesReport(Date aDate)
 {
 	// CONSTANT DECLARATIONS
-	const int TITLE		= 28;
+	const int TITLE		= 32;
 	const int ITEM		= 10;
 	const int QUANTITY	= 10;
 	const int COST		= 10;
@@ -59,10 +59,14 @@ void Warehouse::PrintSalesReport(Date aDate)
 	// OUTPUT TITLE
 	cout << left;
 	cout << setprecision(2)		<< fixed;
-	cout << setfill('-');
-	cout << setw(TITLE) 		<< '-'			 << endl;
-	cout << "SALES REPORT FOR " << aDate.Print() << endl;
-	cout << setw(TITLE)			<< '-'			 << endl	<< endl;
+	cout << setfill('*');
+	cout << setw(TITLE) 		<< '*'			 << endl;
+	cout << "* SALES REPORT FOR ";
+	aDate.Print();
+	cout << " *" 				<< endl;
+	cout << setw(TITLE)			<< '*'			 << endl;
+	cout << setfill(' ');
+	cout << endl;
 
 	// OUTPUT HEADING
 	cout << setw(ITEM)		<< "ITEM";
@@ -86,11 +90,11 @@ void Warehouse::PrintSalesReport(Date aDate)
 
 	while(perPtr != NULL)
 	{
-		if(perPtr->GetDatePurchased() == aDate)
+		if(aDate.CompareDate(perPtr->GetDatePurchased()))
 		{
 			cout << setw(NUMBERING)			<< index << '.';
 			cout << setw(ITEM - NUMBERING)	<< perPtr->GetName();
-			cout << setw(QUANTITY)			<< perPtr->GetQuantity;
+			cout << setw(QUANTITY)			<< perPtr->GetQuantity();
 			cout << setw(COST)				<< perPtr->GetPrice();
 
 			aMember	= members.SearchMember(perPtr->GetBuyerID());
@@ -113,6 +117,44 @@ void Warehouse::PrintSalesReport(Date aDate)
 	cout << endl << endl;
 
 
+
+	cout << right;
+}
+
+void Warehouse::PrintMemberPurchaseReport(Basic aMember)
+{
+	// CONSTANT DECLARATIONS
+	const int TITLE		= 26;
+	const int ITEM		= 10;
+	const int QUANTITY	= 10;
+	const int COST		= 10;
+
+	// VARIABLE DECLARATIONS
+	int		index;
+	bool	noItemsPurchased;
+
+	// OUTPUT TITLE
+	cout << left;
+	cout << setfill('*');
+	cout << setw(TITLE) << '*'	<< endl;
+	cout << "* MEMBER PURCHASE REPORT *"	<< endl;
+	cout << setw(TITLE) << '*'	<< endl;
+	cout << setfill(' ');
+	cout << endl;
+
+	cout << "NAME: "	<< aMember.GetName();
+	cout << "ID:   "	<< aMember.GetId();
+
+	cout << setw(ITEM)		<< "ITEM";
+	cout << setw(QUANTITY)	<< "QUANTITY";
+	cout << setw(COST)		<< "COST";
+	cout << endl;
+
+	cout << setfill('-');
+	cout << setw(ITEM)		<< '-'	<< ' ';
+	cout << setw(QUANTITY)	<< '-'	<< ' ';
+	cout << setw(COST)		<< '-';
+	cout << endl;
 
 	cout << right;
 }

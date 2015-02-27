@@ -130,6 +130,32 @@ void Date::SetYear(int aYear)	// The year to set to
 	year = aYear;
 }
 
+int	 Date::GetDay()	const
+{
+	return day;
+}
+
+int	 Date::GetMonth()	const
+{
+	return month;
+}
+
+int  Date::GetYear()	const
+{
+	return year;
+}
+
+bool Date::CompareDate(Date aDate)	const
+{
+	bool equal;
+
+	equal = day 	== aDate.GetDay()
+		  && month 	== aDate.GetMonth()
+		  && year 	== aDate.GetYear();
+
+	return equal;
+}
+
 /**********************************************************
  * Print
  * --------------------------------------------------------
