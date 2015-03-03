@@ -19,7 +19,7 @@ inventory::inventory()
 
 inventory::~inventory()
 {
-	//No code
+	delete head;
 }
 
 void inventory::SetNumberOfItems(int amountOfItems)
@@ -27,7 +27,7 @@ void inventory::SetNumberOfItems(int amountOfItems)
 	numberOfItems=amountOfItems;
 }
 
-void inventory::readInFile(ifstream inFile, string inFileName)
+void inventory::ReadInFile(ifstream inFile, string inFileName)
 {
 	Item *itemPtr;
 	int month;
@@ -65,7 +65,19 @@ void inventory::readInFile(ifstream inFile, string inFileName)
 	itemPtr=NULL;
 }
 
+void inventory::AddToList(Item *newItem)
+{
+	newItem->SetNextItem(head);
+	head=newItem;
+
+}
+
 int inventory::GetNumberOfItems()
 {
 	return numberOfItems;
+}
+
+Item *inventory::GetHead()
+{
+	return *head;
 }
