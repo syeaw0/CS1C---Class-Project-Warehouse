@@ -1,26 +1,30 @@
 /*************************************************************************
  * AUTHOR     		 : Arman Jafarinia
  * STUDENT ID 		 : 912488
- * Assignment #2     : student
+ * Assignment #2         : student
  * CLASS      		 : CS 1C
  * SECTION    		 : T Th 12:00-1:50
- * DUE DATE   		 : 
+ * DUE DATE   		 :
  * ***********************************************************************/
 
 
 #ifndef INVENTORY_H_
 #define INVENTORY_H_
-#include "c_Item.h"
 
-class Inventory
+#include "c_item.h"
+
+class inventory
 {
 	public:
-		Inventory();				//constructor
-		~Inventory();				//destructor
+		inventory();				//constructor
+		~inventory();				//destructor
 
-		void SetNumberOfItems(int amountOfNumbers);
-		void readInFile();
+		void SetNumberOfItems(int amountOfItems);
+		void ReadInFile(ifstream inFile, string inFileName);
+		void AddToList(Item *newItem);
+		void SearchItem();
 
+		Item *GetHead();
 		int GetNumberOfItems();
 
 	private:
