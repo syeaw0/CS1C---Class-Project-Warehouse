@@ -65,6 +65,29 @@ void Inventory::ReadInFile(ifstream inFile, string inFileName)
 	itemPtr=NULL;
 }
 
+Item *Inventory::SearchItem(int purchaseCode)
+{
+	Item *itemPtr;
+	bool found = false;
+
+
+	itemPtr=head;
+
+	while(itemPtr!=NULL)
+	{
+		if(itemPtr->GetBuyerID()==purchaseCode)
+		{
+			found=true;
+		}
+		else
+		{
+			itemPtr->SetNextItem(itemPtr);
+		}
+	}
+
+	return itemPtr;
+}
+
 void Inventory::AddToList(Item *newItem)
 {
 	newItem->SetNextItem(head);

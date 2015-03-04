@@ -159,3 +159,33 @@ void Warehouse::PrintMemberPurchaseReport(Basic aMember)
 	cout << right;
 }
 
+void Warehouse::PrintMemberPaidPerYearReport()
+{
+	const int TITLE		= 29;
+	const int MEMBER_TYPE	= 11;
+	const int MEMBER_NAME	= 10;
+	const int AMOUNT_DUE	= 10;
+	
+	cout << left;
+	cout << setfill('*');
+	cout << setw(TITLE) << '*'	<< endl;
+	cout << "* MEMBER YEARLY AMOUNT PAID *"	<< endl;
+	cout << setw(TITLE) << '*'	<< endl;
+	cout << setfill(' ');
+	cout << endl;
+
+
+	cout << setw(MEMBER_TYPE)		<< "MEMBER TYPE   ";
+	cout << setw(MEMBER_NAME)	<< "MEMBER NAME  ";
+	cout << setw(AMOUNT_DUE)		<< "AMOUNT DUE";
+	cout << endl;
+
+	cout << setfill('-');
+	cout << setw(MEMBER_TYPE)		<< '-'	<< "   ";
+	cout << setw(MEMBER_NAME)	<< '-'	<< "   ";
+	cout << setw(AMOUNT_DUE)		<< '-';
+	cout << endl;
+
+	cout << right;
+
+}
