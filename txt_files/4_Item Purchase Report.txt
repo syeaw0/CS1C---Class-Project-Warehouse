@@ -1,0 +1,6 @@
+***ITEM PURCHASE REPORT***
+====================================
+| ITEM                  | QUANTITY |
+| 1 gallon of milk      | 4        |
+| Total Price Purchased | 142.54   |
+====================================
