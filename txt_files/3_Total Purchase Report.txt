@@ -1,0 +1,23 @@
+***TOTAL PURCHASE REPORT***
+====================================
+| ID      | MEMBER                 |
+| 12345   | Sally Shopper          |
+====================================
+| PRODUCT... (QUANTITY)   | PRICE  |
+| <Item 1> (insert #)     | 123.45 |
+| <Item 2> (insert #)     | 123.45 |
+| <Item 3> (insert #)     | .....  |
+...
+
+====================================
+| ID      | MEMBER                 |
+| 48295   | Someone Else           |
+====================================
+| PRODUCT... (QUANTITY)   | PRICE  |
+| <Item 1> (insert #)     | 123.45 |
+| <Item 2> (insert #)     | 123.45 |
+| <Item 3> (insert #)     | .....  |
+...
+
+====================================
+TOTAL PURCHASE REPORT = $2344523.3
