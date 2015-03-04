@@ -38,7 +38,7 @@ public:
 	float GetPrice() const;
 	int GetQuantity() const;
 	int GetBuyerID() const;
-	void GetDatePurchased() const;
+	Date GetDatePurchased() const;
 	Item *GetNextItem() const;
 
 private:

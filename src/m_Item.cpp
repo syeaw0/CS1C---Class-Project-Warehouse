@@ -69,11 +69,9 @@ int Item::GetBuyerID() const
 {
 	return buyerID;
 }
-void Item::GetDatePurchased() const
+Date Item::GetDatePurchased() const
 {
-	purchaseDate.Print();
-	//THIS WILL PRINT OUT SOMETHING
-	//WOULD WE NEED IT TO DO THAT OR RETURN AN ACTUAL DATE VALUE(S)?
+	return purchaseDate;
 }
 
 Item *Item::GetNextItem() const

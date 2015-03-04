@@ -7,27 +7,27 @@
  * DUE DATE   		 :
  * ***********************************************************************/
 
-#include "inventory.h"
+#include "Inventory.h"
 #include <fstream>
 #include <ios>
 #include <limits>
-inventory::inventory()
+Inventory::Inventory()
 {
-	numberOfItems=0;
-	head=NULL;
+	numberOfItems	= 0;
+	head 			= NULL;
 }
 
-inventory::~inventory()
+Inventory::~Inventory()
 {
 	delete head;
 }
 
-void inventory::SetNumberOfItems(int amountOfItems)
+void Inventory::SetNumberOfItems(int amountOfItems)
 {
-	numberOfItems=amountOfItems;
+	numberOfItems = amountOfItems;
 }
 
-void inventory::ReadInFile(ifstream inFile, string inFileName)
+void Inventory::ReadInFile(ifstream inFile, string inFileName)
 {
 	Item *itemPtr;
 	int month;
@@ -65,19 +65,19 @@ void inventory::ReadInFile(ifstream inFile, string inFileName)
 	itemPtr=NULL;
 }
 
-void inventory::AddToList(Item *newItem)
+void Inventory::AddToList(Item *newItem)
 {
 	newItem->SetNextItem(head);
 	head=newItem;
 
 }
 
-int inventory::GetNumberOfItems()
+int Inventory::GetNumberOfItems()
 {
 	return numberOfItems;
 }
 
-Item *inventory::GetHead()
+Item *Inventory::GetHead()
 {
 	return *head;
 }
