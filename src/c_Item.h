@@ -28,7 +28,7 @@ public:
 	void SetItemPrice(float thePrice);
 	void SetItemQuantity(int theQuantity);
 	void SetPurchaseID(int theBuyerID);
-	void SetDatePurchased(int day, int month, int year);
+	void SetDatePurchased(Date aDate);
 	void SetNextItem(Item *itemHead);
 
 	/*************

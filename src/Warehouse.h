@@ -1,12 +1,12 @@
 /*************************************************
-* AUTHOR 		: Daniel Phan, Samuel Yeaw,
-* 				  Arman Jafarinia, Jacob McIver
-* STUDENT ID 	: 243390
-* Class Project	: Warehouse Class Project
-* CLASS 		: CS1C
-* SECTION 		: TTh 12:30PM - 4:20PM
-* DUE DATE 		: 3/17/15
-**************************************************/
+ * AUTHOR 		: Daniel Phan, Samuel Yeaw,
+ * 				  Arman Jafarinia, Jacob McIver
+ * STUDENT ID 	: 243390
+ * Class Project	: Warehouse Class Project
+ * CLASS 		: CS1C
+ * SECTION 		: TTh 12:30PM - 4:20PM
+ * DUE DATE 		: 3/17/15
+ **************************************************/
 
 #ifndef WAREHOUSE_H_
 #define WAREHOUSE_H_
@@ -33,8 +33,8 @@ class Warehouse
 {
 private:
 	/*ATTRIBUTES*/
-	MemberList	members;
-	Inventory	inventory;
+	MemberList members;
+	Inventory  inventory;
 
 public:
 	/*METHODS*/

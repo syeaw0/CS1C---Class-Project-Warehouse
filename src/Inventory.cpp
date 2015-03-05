@@ -8,18 +8,25 @@
  * ***********************************************************************/
 
 #include "Inventory.h"
-#include <fstream>
-#include <ios>
-#include <limits>
+
 Inventory::Inventory()
 {
-	numberOfItems	= 0;
-	head 			= NULL;
+	numberOfItems = 0;
+	head = NULL;
 }
 
 Inventory::~Inventory()
 {
-	delete head;
+	Item*	perPtr;
+
+	perPtr = head;
+
+	while(perPtr != NULL)
+	{
+		head = head->GetNextItem();
+		delete perPtr;
+		perPtr = head;
+	}
 }
 
 void Inventory::SetNumberOfItems(int amountOfItems)
@@ -27,42 +34,37 @@ void Inventory::SetNumberOfItems(int amountOfItems)
 	numberOfItems = amountOfItems;
 }
 
-void Inventory::ReadInFile(ifstream inFile, string inFileName)
+void Inventory::ReadInFile(ifstream inFile)
 {
 	Item *itemPtr;
-	int month;
-	int day;
-	int year;
+	Date aDate;
 	int memberId;
 	string itemName;
 	float cost;
 	int quantity;
 
-	inFile.open(inFileName.c_str());
-
-	itemPtr=new Item;
-	while(inFile && itemPtr!=NULL)
+	itemPtr = new Item;
+	while (inFile && itemPtr != NULL)
 	{
-		inFile >> month;
-		inFile.ignore(numeric_limits<streamsize>::max(), '/');
-		inFile >> day;
-		inFile.ignore(numeric_limits<streamsize>::max(), '/');
-		inFile >> year;
-		itemPtr->SetDatePurchased(day, month, year);
+		aDate.SetDate(inFile);
+		itemPtr->SetDatePurchased(aDate);
 		inFile >> memberId;
 		itemPtr->SetPurchaseID(memberId);
-		inFile.ignore(numeric_limits<streamsize>::max(),'\n');
+		inFile.ignore(numeric_limits<streamsize>::max(), '\n');
 		getline(inFile, itemName);
 		inFile >> cost;
+		itemPtr->SetItemPrice(cost);
 		inFile >> quantity;
+		itemPtr->SetItemQuantity(quantity);
 		inFile.ignore(numeric_limits<streamsize>::max(), '\n');
+
 		itemPtr->SetNextItem(head);
-		head=itemPtr;
-		itemPtr=new Item;
+		head	= itemPtr;
+		itemPtr	= new Item;
 	}
 
 	delete itemPtr;
-	itemPtr=NULL;
+	itemPtr = NULL;
 }
 
 Item *Inventory::SearchItem(int purchaseCode)
@@ -70,18 +72,17 @@ Item *Inventory::SearchItem(int purchaseCode)
 	Item *itemPtr;
 	bool found = false;
 
+	itemPtr = head;
 
-	itemPtr=head;
-
-	while(itemPtr!=NULL)
+	while (itemPtr != NULL && !found)
 	{
-		if(itemPtr->GetBuyerID()==purchaseCode)
+		if (itemPtr->GetBuyerID() == purchaseCode)
 		{
-			found=true;
+			found = true;
 		}
 		else
 		{
-			itemPtr->SetNextItem(itemPtr);
+			itemPtr	= itemPtr->GetNextItem();
 		}
 	}
 
@@ -91,16 +92,16 @@ Item *Inventory::SearchItem(int purchaseCode)
 void Inventory::AddToList(Item *newItem)
 {
 	newItem->SetNextItem(head);
-	head=newItem;
+	head = newItem;
 
 }
 
-int Inventory::GetNumberOfItems()
+int Inventory::GetNumberOfItems()const
 {
 	return numberOfItems;
 }
 
-Item *Inventory::GetHead()
+Item *Inventory::GetHead()const
 {
 	return *head;
 }

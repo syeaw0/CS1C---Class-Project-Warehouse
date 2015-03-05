@@ -41,9 +41,9 @@ void Item::SetPurchaseID(int theBuyerID)
 {
 	buyerID = theBuyerID;
 }
-void Item::SetDatePurchased(int day, int month, int year)
+void Item::SetDatePurchased(Date aDate)
 {
-	purchaseDate.SetDate(day, month, year);
+	purchaseDate	= aDate;
 }
 
 void Item::SetNextItem(Item *nextNode)
