@@ -22,6 +22,36 @@ Date::~Date()
 
 }
 
+void Date::SetDate(string newDate)
+{
+	char	aDate[10];
+	char	aDay[2];
+	char	aMonth[2];
+	char	aYear[4];
+	int		index;
+
+	aDate	= newDate.c_str();
+
+	for(index = 0; index < 2; index++)
+	{
+		aDay[index]		= aDate[index];
+	}
+
+	for(index = 3; index < 5; index++)
+	{
+		aMonth[index]	= aDate[index];
+	}
+
+	for(index = 6; index < 10; index++)
+	{
+		aYear[index]	= aDate[index];
+	}
+
+	day		= atoi(aDay);
+	month	= atoi(aMonth);
+	year	= atoi(aYear);
+}
+
 void Date::SetDate(ifstream& inFile)
 {
 	char	aDate[10];

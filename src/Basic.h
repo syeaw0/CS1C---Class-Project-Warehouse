@@ -84,7 +84,7 @@ public:
 	int			GetId()			const;
 	Date		GetExpiration()	const;
 	float		GetTotalSpent()	const;
-	MemberType 	GetMemberType()	const
+	MemberType 	GetMemberType()	const;
 	Basic   	*GetNext()		const;
 };
 

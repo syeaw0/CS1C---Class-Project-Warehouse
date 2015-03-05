@@ -26,6 +26,32 @@ Warehouse::~Warehouse()
 
 }
 
+void Warehouse::AddMember()
+{
+	// CONSTANT DECLARATIONS
+	const int SPACING	= 17;
+	string name;
+	int    id;
+	string expiration;
+
+	cout << "You have chosen to create a new member.\n";
+	cout << "Please enter the following information about the new member\n";
+
+	cout << left;
+	cout << setw(SPACING)	<< "NAME:";
+	getline(cin, name);
+
+	cout << setw(SPACING)	<< "ID:   ";
+	cin  >> id;
+
+	cout << setw(SPACING)	<< "EXPIRATION DATE:"	<< "(mm/dd/yyyy)";
+	getline(cin, expiration);
+
+	// ERROR TESTING !!!!!!!!!!!!!!!!!
+
+	cout << right;
+}
+
 /*************************************************
  * PrintSalesReport
  * -----------------------------------------------
