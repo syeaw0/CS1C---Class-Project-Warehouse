@@ -57,6 +57,29 @@ using namespace std;
 			curr = curr->next;
 		}
 	}
+	
+	member memberList :: SearchId(int userId)
+	{
+		memberInfo memberPtr;
+		bool found;
+	
+		found = false;
+		memberPtr = head;
+	
+		while(memberPtr != NULL)
+		{
+			if(memberPtr->id == userId)
+			{
+				found = true;
+			}
+			else
+			{
+				memberPtr = memberPtr->next;
+			}
+		}
+	
+		return memberPtr;
+	}	
 
 
 	void memberList :: GetFileName(string fileName)
