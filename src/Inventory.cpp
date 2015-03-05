@@ -8,9 +8,7 @@
  * ***********************************************************************/
 
 #include "Inventory.h"
-#include <fstream>
-#include <ios>
-#include <limits>
+
 Inventory::Inventory()
 {
 	numberOfItems = 0;
@@ -19,7 +17,16 @@ Inventory::Inventory()
 
 Inventory::~Inventory()
 {
-	delete head;
+	Item*	perPtr;
+
+	perPtr = head;
+
+	while(perPtr != NULL)
+	{
+		head = head->GetNextItem();
+		delete perPtr;
+		perPtr = head;
+	}
 }
 
 void Inventory::SetNumberOfItems(int amountOfItems)
@@ -27,38 +34,33 @@ void Inventory::SetNumberOfItems(int amountOfItems)
 	numberOfItems = amountOfItems;
 }
 
-void Inventory::ReadInFile(ifstream inFile, string inFileName)
+void Inventory::ReadInFile(ifstream inFile)
 {
 	Item *itemPtr;
-	int month;
-	int day;
-	int year;
+	Date aDate;
 	int memberId;
 	string itemName;
 	float cost;
 	int quantity;
 
-	inFile.open(inFileName.c_str());
-
 	itemPtr = new Item;
 	while (inFile && itemPtr != NULL)
 	{
-		inFile >> month;
-		inFile.ignore(numeric_limits<streamsize>::max(), '/');
-		inFile >> day;
-		inFile.ignore(numeric_limits<streamsize>::max(), '/');
-		inFile >> year;
-		itemPtr->SetDatePurchased(day, month, year);
+		aDate.SetDate(inFile);
+		itemPtr->SetDatePurchased(aDate);
 		inFile >> memberId;
 		itemPtr->SetPurchaseID(memberId);
 		inFile.ignore(numeric_limits<streamsize>::max(), '\n');
 		getline(inFile, itemName);
 		inFile >> cost;
+		itemPtr->SetItemPrice(cost);
 		inFile >> quantity;
+		itemPtr->SetItemQuantity(quantity);
 		inFile.ignore(numeric_limits<streamsize>::max(), '\n');
+
 		itemPtr->SetNextItem(head);
-		head = itemPtr;
-		itemPtr = new Item;
+		head	= itemPtr;
+		itemPtr	= new Item;
 	}
 
 	delete itemPtr;
@@ -72,7 +74,7 @@ Item *Inventory::SearchItem(int purchaseCode)
 
 	itemPtr = head;
 
-	while (itemPtr != NULL)
+	while (itemPtr != NULL && !found)
 	{
 		if (itemPtr->GetBuyerID() == purchaseCode)
 		{
@@ -80,7 +82,7 @@ Item *Inventory::SearchItem(int purchaseCode)
 		}
 		else
 		{
-			itemPtr->SetNextItem(itemPtr);
+			itemPtr	= itemPtr->GetNextItem();
 		}
 	}
 
@@ -94,12 +96,12 @@ void Inventory::AddToList(Item *newItem)
 
 }
 
-int Inventory::GetNumberOfItems()
+int Inventory::GetNumberOfItems()const
 {
 	return numberOfItems;
 }
 
-Item *Inventory::GetHead()
+Item *Inventory::GetHead()const
 {
 	return *head;
 }

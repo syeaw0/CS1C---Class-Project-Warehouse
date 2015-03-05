@@ -41,7 +41,6 @@ public:
 
 	// MUTATORS
 
-	void LoadMember(ifstream &inFile);
 	void SetRebate(float aRebate);
 
 	// ACCESSORS

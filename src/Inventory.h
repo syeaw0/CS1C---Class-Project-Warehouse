@@ -10,8 +10,11 @@
 #ifndef INVENTORY_H_
 #define INVENTORY_H_
 
+#include <fstream>
+#include <ios>
+#include <limits>
 #include "c_Item.h"
-
+#include "Date.h"
 class Inventory
 {
 public:
@@ -21,9 +24,9 @@ public:
 
 	// MUTATORS
 	void SetNumberOfItems(int amountOfItems);
-	void ReadInFile(ifstream inFile, string inFileName);
+	void ReadInFile(ifstream inFile);
 	void AddToList(Item *newItem);
-	void SearchItem();
+	Item *SearchItem(int purchaseCode);
 
 	// ACCESSORS
 	Item *GetHead() const;

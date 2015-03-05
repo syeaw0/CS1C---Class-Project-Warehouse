@@ -197,7 +197,7 @@ void Warehouse::PrintMemberPurchaseReport(Basic aMember)
 
 	while(perPtr != NULL)
 	{
-		if(perPtr->GetPurchaseId() == aMember->GetId())
+		if(perPtr->GetBuyerID() == aMember.GetId())
 		{
 			cout << index	<< ". ";
 			cout << setw(ITEM - 4)	<< perPtr->GetName();
@@ -209,7 +209,7 @@ void Warehouse::PrintMemberPurchaseReport(Basic aMember)
 			noItemsPurchased	= false;
 		}
 
-		perPtr	= perPtr->GetNext();
+		perPtr	= perPtr->GetNextItem();
 		index++;
 	}
 
