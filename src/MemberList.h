@@ -11,46 +11,41 @@
 #define MEMBERLIST_H_
 
 #include <iostream>
+#include <iomanip>
 #include <string>
-#include <fstream>
 
 using namespace std;
 
-class memberList
+class MemberList
 {
 	public:
 
 	/*METHODS*/
 
-	memberList();
+	MemberList();
 
 	void AddMember();
 
 	void DeleteMember(string deleteName);
 
 	void PrintList();
-	
-	member SearchId(int userId);
 
-	void GetFileName(string fileName);
+	void GetFileName();
+
+	MemberList SearchId(int userId);
+
+	void  Output();
 
 
 
 	private:
-	struct memberInfo
-	{
-		string name;
-		int id;
-		string membership;
-		string expiration;
-		memberInfo *next;
-	};
 
-	memberInfo *head;
-	memberInfo *curr;
-	memberInfo *temp;
-	string fileName;
-	ifstream inFile;
+	 MemberList *head;
+
+	 MemberList*curr;
+
+	 MemberList*temp;
+
 
 };
 
