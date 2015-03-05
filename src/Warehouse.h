@@ -42,6 +42,7 @@ public:
 	~Warehouse();
 
 	// MUTATORS
+	void AddMember();
 
 	// ACCESSORS
 	void PrintSalesReport(Date aDate);
