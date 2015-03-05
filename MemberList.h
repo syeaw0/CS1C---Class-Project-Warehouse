@@ -29,6 +29,8 @@ class memberList
 	void DeleteMember(string deleteName);
 
 	void PrintList();
+	
+	member SearchId(int userId);
 
 	void GetFileName(string fileName);
 
