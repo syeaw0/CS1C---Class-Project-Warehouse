@@ -11,6 +11,7 @@
 #define MEMBERLIST_H_
 
 #include <iostream>
+#include <cstdlib>
 #include <string>
 #include <fstream>
 #include "Preferred.h"
