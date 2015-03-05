@@ -26,8 +26,8 @@ public:
 	void SearchItem();
 
 	// ACCESSORS
-	Item *GetHead();
-	int GetNumberOfItems();
+	Item *GetHead() const;
+	int GetNumberOfItems() const;
 
 private:
 	/*ATTRIBUTES*/

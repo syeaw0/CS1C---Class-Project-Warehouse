@@ -14,6 +14,7 @@ Basic::Basic()
 	name.clear();
 	id			= 0;
 	totalSpent	= 0;
+	type		= BASIC;
 	next		= NULL;
 }
 
@@ -91,31 +92,41 @@ void Basic::SetTotalSpent(float anAmount)
 	totalSpent	= anAmount;
 }
 
+void Basic::SetMemberType(MemberType aType)
+{
+	type	= aType;
+}
+
 void Basic::SetNext(Basic *ptr)
 {
 	next	= ptr;
 }
 
-string  Basic::GetName()		const
+string  	Basic::GetName()		const
 {
 	return name;
 }
 
-int		Basic::GetId()			const
+int			Basic::GetId()			const
 {
 	return id;
 }
-Date	Basic::GetExpiration()	const
+Date		Basic::GetExpiration()	const
 {
 	return expiration;
 }
 
-float	Basic::GetTotalSpent()	const
+float		Basic::GetTotalSpent()	const
 {
 	return totalSpent;
 }
 
-Basic   *Basic::GetNext()		const
+MemberType 	Basic::GetMemberType()	const
+{
+	return type;
+}
+
+Basic   	*Basic::GetNext()		const
 {
 	return next;
 }

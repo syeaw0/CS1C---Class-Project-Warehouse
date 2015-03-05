@@ -52,9 +52,17 @@ void Warehouse::PrintSalesReport(Date aDate)
 
 	// VARIABLE DECLARATIONS
 	int		index;
+	int		totalBasic;
+	int		totalPreferred;
+	float	totalRevenue;
 	bool	noItemsPurchased;
 	Item*	perPtr;
 	Basic*	aMember;
+
+	// VARIABLE INITIALIZATION
+	totalBasic		= 0;
+	totalPreferred	= 0;
+	totalRevenue	= 0;
 
 	// OUTPUT TITLE
 	cout << left;
@@ -102,21 +110,44 @@ void Warehouse::PrintSalesReport(Date aDate)
 			cout << setw(BUYER)				<< aMember->GetName();
 			cout << endl;
 
+			totalRevenue += (perPtr->GetQuantity() * perPtr->GetPrice());
+
+			if(aMember->GetMemberType() == BASIC)
+			{
+				totalBasic++;
+			}
+			else
+			{
+				totalPreferred++;
+			}
+
 			noItemsPurchased	= false;
 		}
-		else
-		{
-			perPtr	= perPtr->GetNextItem();
-			index++;
-		}
+
+		perPtr	= perPtr->GetNextItem();
+		index++;
+	}
+
+	if(noItemsPurchased)
+	{
+		cout << "<No items were purchased on this date>\n";
 	}
 
 	cout << setfill('-');
 	cout << setw(ITEM + QUANTITY + COST + BUYER)	<< '-';
-	cout << setfill(' ');
 	cout << endl << endl;
 
+	cout << "TOTAL NUMBER OF MEMBERS\n";
+	cout << setw(23)	<< '-'	<< endl;
+	cout << setfill(' ');
+	cout << endl;
 
+	cout << "BASIC:     "	<<	totalBasic		<< endl;
+	cout << "PREFERRED: "	<<	totalPreferred	<< endl;
+	cout << endl;
+
+	cout << "TOTAL REVENUE: $"	<< totalRevenue	<< endl;
+	cout << endl << endl;
 
 	cout << right;
 }
@@ -131,7 +162,9 @@ void Warehouse::PrintMemberPurchaseReport(Basic aMember)
 
 	// VARIABLE DECLARATIONS
 	int		index;
+	int		totalPurchases;
 	bool	noItemsPurchased;
+	Item*	perPtr;
 
 	// OUTPUT TITLE
 	cout << left;
@@ -156,6 +189,73 @@ void Warehouse::PrintMemberPurchaseReport(Basic aMember)
 	cout << setw(COST)		<< '-';
 	cout << endl;
 
+	// Loop for Purchases
+	index				= 1;
+	totalPurchases		= 0;
+	perPtr				= inventory.GetHead();
+	noItemsPurchased	= true;
+
+	while(perPtr != NULL)
+	{
+		if(perPtr->GetPurchaseId() == aMember->GetId())
+		{
+			cout << index	<< ". ";
+			cout << setw(ITEM - 4)	<< perPtr->GetName();
+			cout << setw(QUANTITY)	<< perPtr->GetQuantity();
+			cout << setw(COST)		<< perPtr->GetPrice();
+			cout << endl;
+
+			totalPurchases++;
+			noItemsPurchased	= false;
+		}
+
+		perPtr	= perPtr->GetNext();
+		index++;
+	}
+
+	if(noItemsPurchased)
+	{
+		cout << "<No items were puchased by this user>\n";
+	}
+
+	cout << setfill('-');
+	cout << setw(ITEM + QUANTITY + COST)	<< '-';
+	cout << setfill(' ');
+	cout << endl << endl;
+
+	cout << "TOTAL PURCHASES: ";
+	cout << endl << endl;
+
 	cout << right;
 }
 
+void Warehouse::PrintMemberPaidPerYearReport()
+{
+	const int TITLE		= 29;
+	const int MEMBER_TYPE	= 11;
+	const int MEMBER_NAME	= 10;
+	const int AMOUNT_DUE	= 10;
+	
+	cout << left;
+	cout << setfill('*');
+	cout << setw(TITLE) << '*'	<< endl;
+	cout << "* MEMBER YEARLY AMOUNT PAID *"	<< endl;
+	cout << setw(TITLE) << '*'	<< endl;
+	cout << setfill(' ');
+	cout << endl;
+
+
+	cout << setw(MEMBER_TYPE)		<< "MEMBER TYPE   ";
+	cout << setw(MEMBER_NAME)	<< "MEMBER NAME  ";
+	cout << setw(AMOUNT_DUE)		<< "AMOUNT DUE";
+	cout << endl;
+
+	cout << setfill('-');
+	cout << setw(MEMBER_TYPE)		<< '-'	<< "   ";
+	cout << setw(MEMBER_NAME)	<< '-'	<< "   ";
+	cout << setw(AMOUNT_DUE)		<< '-';
+	cout << endl;
+
+	cout << right;
+
+}

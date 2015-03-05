@@ -26,15 +26,14 @@ public:
 	MemberList();
 	~MemberList();
 
+	// MUTATORS
 	void AddMember();
-
 	void DeleteMember(string deleteName);
 
-	void PrintList();
-
-	void GetFileName(string fileName);
-
-	Basic* SearchMember(int anId);
+	// ACCESSORS
+	void PrintList()const;
+	void GetFileName(string fileName)const;
+	Basic* SearchMember(int anId)const;
 
 private:
 	struct memberInfo
