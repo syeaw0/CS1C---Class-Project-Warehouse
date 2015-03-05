@@ -231,11 +231,14 @@ void Warehouse::PrintMemberPurchaseReport(Basic aMember)
 
 void Warehouse::PrintMemberPaidPerYearReport()
 {
-	const int TITLE		= 29;
+	const int TITLE			= 29;
 	const int MEMBER_TYPE	= 11;
 	const int MEMBER_NAME	= 10;
-	const int AMOUNT_DUE	= 10;
-	
+	const int TOTAL_SPENT	= 10;
+
+	Basic *perPtr=inventory.GetHead();
+
+
 	cout << left;
 	cout << setfill('*');
 	cout << setw(TITLE) << '*'	<< endl;
@@ -246,16 +249,89 @@ void Warehouse::PrintMemberPaidPerYearReport()
 
 
 	cout << setw(MEMBER_TYPE)		<< "MEMBER TYPE   ";
-	cout << setw(MEMBER_NAME)	<< "MEMBER NAME  ";
-	cout << setw(AMOUNT_DUE)		<< "AMOUNT DUE";
+	cout << setw(MEMBER_NAME)		<< "MEMBER NAME  ";
+	cout << setw(TOTAL_SPENT)		<< "TOTAL SPENT";
 	cout << endl;
 
 	cout << setfill('-');
 	cout << setw(MEMBER_TYPE)		<< '-'	<< "   ";
 	cout << setw(MEMBER_NAME)	<< '-'	<< "   ";
-	cout << setw(AMOUNT_DUE)		<< '-';
+	cout << setw(TOTAL_SPENT)		<< '-';
 	cout << endl;
+
+	while(perPtr!=NULL)
+	{
+
+		if(perPtr->GetMemberType()==BASIC)
+		{
+			cout << setw(MEMBER_TYPE) << "Basic";
+		}
+		else if(perPtr->GetMemberType()==PREFERRED)
+		{
+			cout << setw(MEMBER_TYPE) << "Preferred";
+		}
+
+		cout << setw(MEMBER_NAME) << perPtr->GetName();
+		cout << setw(TOTAL_SPENT) << perPtr->GetTotalSpent();
+		cout << endl;
+
+		perPtr=perPtr->GetNext();
+	}
 
 	cout << right;
 
 }
+
+void Warehouse::PrintAmountDueByMonthReport(Date aDate)
+{
+	const int TITLE			= 29;
+	const int MONTH			= 11;
+	const int MEMBER_NAME	= 10;
+	const int AMOUNT_DUE	= 10;
+
+	Preferred *perPtr=inventory.GetHead();
+
+	cout << left;
+	cout << setfill('*');
+	cout << setw(TITLE) << '*'	<< endl;
+	cout << "* AMOUNT DUE AT THE END OF MONTH REPORT *"	<< endl;
+	cout << setw(TITLE) << '*'	<< endl;
+	cout << setfill(' ');
+	cout << endl;
+
+
+	cout << setw(MONTH)			<< "MONTH   ";
+	cout << setw(MEMBER_NAME)	<< "MEMBER NAME  ";
+	cout << setw(AMOUNT_DUE)	<< "AMOUNT DUE";
+	cout << endl;
+
+	cout << setfill('-');
+	cout << setw(MONTH)		<< '-'	<< "   ";
+	cout << setw(MEMBER_NAME)	<< '-'	<< "   ";
+	cout << setw(AMOUNT_DUE)		<< '-';
+	cout << endl;
+
+	while(perPtr!=NULL)
+	{
+		if(aDate.GetMonth()==perPtr->GetExpiration().GetMonth())
+		{
+			cout << setw(MONTH) << aDate.GetMonth();
+			cout << setw(MEMBER_NAME) << perPtr->GetName();
+				if(perPtr->GetMemberType()==BASIC)
+				{
+					cout << setw(AMOUNT_DUE) << "$55.00";
+
+				}
+				else
+				{
+					cout << setw(AMOUNT_DUE) << "$95.00";
+				}
+			cout << endl;
+		}
+
+		perPtr=perPtr->GetNext();
+	}
+
+	cout << right;
+}
+
