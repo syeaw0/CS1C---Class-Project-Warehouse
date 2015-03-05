@@ -1,3 +1,13 @@
+/*
+ * memberList.cpp
+ *
+ *  Created on: Feb 24, 2015
+ *      Author: jmciver1
+ */
+
+
+
+
 /**************************************************************************
 * AUTHOR        : Jacob Mc'Iver
 * STUDENT ID    : 265933
@@ -14,75 +24,92 @@
 
 using namespace std;
 
-	memberList :: memberList()
+	MemberList :: MemberList()
 	{
 		head = NULL;
 		curr = NULL;
 		temp = NULL;
 	}
 
-	void memberList :: AddMember()
+	void MemberList :: AddMember()
 	{
-		memberInfo *memberPtr = new memberInfo;
+		MemberList *memberPtr = new MemberList;
 
 		//CALC - assigns variables to struct members
-		getline(inFile, memberPtr -> name);
-		inFile >> memberPtr -> id;
-		inFile.ignore(1000, '\n');
-		getline(inFile, memberPtr -> membership);
-		getline(inFile, memberPtr -> expiration);
+		memberPtr -> name = SetName(aName);
+		memberPtr -> id = SetId(anId);
+		memberPtr -> membership = SetMemberType(aType);
+		memberPtr -> expiration = SetExpiration(aDate);
 
 		//CALC - links new node to stack
-		memberPtr -> next = head;
+		memberPtr -> next = SetNext(*ptr);
 		head = memberPtr;
 		memberPtr = NULL;
 	}
 
-	void memberList :: DeleteMember(string deleteName)
-	{
-		// havent written yet
-	}
+//	void memberList :: DeleteMember(memberInfo* head)
+//	{
+//
+//		 memberInfo* memberPtr;
+//		 memberPtr = head;
+//
+//		 if (head !=NULL )
+//		 {
+//			 memberPtr = memberPtr -> next;
+//			 head = memberPtr;
+//		 }
+//
+//		delete memberPtr;
+//
+//	}
 
-	void memberList :: PrintList()
+	void MemberList :: PrintList()
 	{
-		curr = head;
+		memberPtr = head;
 
 		while(curr != NULL)
 		{
-			cout << "Name: " << curr->name << endl;
-			cout << "ID: " <<  curr->id << endl;
-			cout << "Membership state: " << curr->membership << endl;
+			cout << "Name: " << GetName() << endl;
+			cout << "ID: " <<  GetId()<< endl;
+			cout << "Membership state: " << GetMemberType() << endl;
 			cout << "Expiration date : ";
-			cout << curr->expiration << endl << endl;
-			curr = curr->next;
+			cout << GetExpiration() << endl << endl;
+			memberPtr -> next = SetNext(*ptr);
 		}
 	}
-	
-	member memberList :: SearchId(int userId)
-	{
-		memberInfo memberPtr;
-		bool found;
-	
-		found = false;
-		memberPtr = head;
-	
-		while(memberPtr != NULL)
+
+	MemberList MemberList :: SearchId(int userId)
 		{
-			if(memberPtr->id == userId)
+			MemberList *memberPtr;
+			bool found;
+
+			found = false;
+			memberPtr = head;
+
+			while(memberPtr != NULL)
 			{
-				found = true;
+				if(memberPtr->id == userId)
+				{
+					found = true;
+				}
+				else
+				{
+					memberPtr = memberPtr->next;
+				}
 			}
-			else
-			{
-				memberPtr = memberPtr->next;
-			}
+
+			return memberPtr;
 		}
-	
-		return memberPtr;
-	}	
 
 
-	void memberList :: GetFileName(string fileName)
+	void memberList :: Output()
 	{
-		inFile.open(fileName.c_str());
+
+		cout << setw(30) << "Rebate Report" << endl;
+		cout << "-----------------------------------------------" << endl;
+		cout << "Name: " <<  50;
+		cout << left << setw(10) << "Id: " << 20;
+
 	}
+
+
