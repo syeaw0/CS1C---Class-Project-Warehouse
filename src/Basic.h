@@ -17,6 +17,14 @@
 #include "Date.h"
 using namespace std;
 
+// USER DEFINED TYPES
+
+enum MemberType
+{
+	BASIC,
+	PREFERRED
+};
+
 /**********************************************************
  * CLASS Basic
  * --------------------------------------------------------
@@ -48,11 +56,12 @@ class Basic
 protected:
 	/*ATTRIBUTES*/
 
-	string 	name;		// The name of the member
-	int    	id;			// The ID of the member
-	Date	expiration;	// The expiration date of the member
-	float	totalSpent;	// The total amount spent
-	Basic	*next;		// A pointer to the next member
+	string 		name;		// The name of the member
+	int    		id;			// The ID of the member
+	Date		expiration;	// The expiration date of the member
+	float		totalSpent;	// The total amount spent
+	MemberType	type;		// The type of member
+	Basic		*next;		// A pointer to the next member
 
 public:
 	/*METHODS*/
@@ -66,15 +75,17 @@ public:
 	void SetId(int anId);
 	void SetExpiration(Date aDate);
 	void SetTotalSpent(float anAmount);
+	void SetMemberType(MemberType aType);
 	void SetNext(Basic *ptr);
 
 	// ACCESSORS
 
-	string  GetName()		const;
-	int		GetId()			const;
-	Date	GetExpiration()	const;
-	float	GetTotalSpent()	const;
-	Basic   *GetNext()		const;
+	string  	GetName()		const;
+	int			GetId()			const;
+	Date		GetExpiration()	const;
+	float		GetTotalSpent()	const;
+	MemberType 	GetMemberType()	const
+	Basic   	*GetNext()		const;
 };
 
 #endif /* BASIC_H_ */

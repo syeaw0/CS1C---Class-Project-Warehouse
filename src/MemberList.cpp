@@ -43,7 +43,7 @@ void MemberList::DeleteMember(string deleteName)
 	// havent written yet
 }
 
-void MemberList::PrintList()
+void MemberList::PrintList()const
 {
 	curr = head;
 
@@ -58,7 +58,7 @@ void MemberList::PrintList()
 	}
 }
 
-void MemberList::GetFileName(string fileName)
+void MemberList::GetFileName(string fileName)const
 {
 	inFile.open(fileName.c_str());
 }
