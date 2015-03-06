@@ -1,0 +1,44 @@
+Sally Shopper
+12345
+Basic
+11/01/2015
+Fred Frugal
+67899
+Preferred
+12/15/2015
+Betty Buysalot
+12899
+Preferred
+01/25/2015
+Larry Largefamily
+88888
+Basic
+02/01/2015
+Linda Livesalone
+35647
+Basic
+12/15/2015
+Sam Single
+31311
+Preferred
+12/05/2015
+Kathy Havealotsofkids
+12121
+Basic
+12/30/2015
+Vern Video 
+77777
+Preferred
+11/15/2015
+Benjamin Business
+16161
+Basic
+11/20/2015
+Tasha the Cat
+61616
+Basic
+03/20/2015
+Sue Shoparound
+56723
+Preferred
+03/21/2015
