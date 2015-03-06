@@ -27,6 +27,7 @@ public:
 	void ReadInFile(ifstream inFile);
 	void AddToList(Item *newItem);
 	Item *SearchItem(int purchaseCode);
+	Item *SearchItem(string purchaseItem);
 
 	// ACCESSORS
 	Item *GetHead() const;

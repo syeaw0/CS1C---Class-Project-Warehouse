@@ -89,6 +89,29 @@ Item *Inventory::SearchItem(int purchaseCode)
 	return itemPtr;
 }
 
+//Overloaded Search w/ string input
+Item *Inventory::SearchItem(string purchaseItemName)
+{
+	Item *itemPtr;
+	bool found = false;
+
+	itemPtr = head;
+
+	while (itemPtr != NULL && !found)
+	{
+		if (itemPtr->GetName() == purchaseItemName)
+		{
+			found = true;
+		}
+		else
+		{
+			itemPtr	= itemPtr->GetNextItem();
+		}
+	}
+
+	return itemPtr;
+}
+
 void Inventory::AddToList(Item *newItem)
 {
 	newItem->SetNextItem(head);

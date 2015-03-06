@@ -47,6 +47,9 @@ public:
 	void PrintSalesReport(Date aDate);
 	void PrintMemberPurchaseReport(Basic aMember);
 	void PrintMemberPaidPerYearReport();
+	void Warehouse::PrintTotalSalesReport();
+	void PrintItemSalesReport(string itemToSearch);
+
 };
 
 #endif /* WAREHOUSE_H_ */

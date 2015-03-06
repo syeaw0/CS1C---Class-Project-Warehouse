@@ -259,3 +259,41 @@ void Warehouse::PrintMemberPaidPerYearReport()
 	cout << right;
 
 }
+
+void Warehouse::PrintTotalSalesReport()
+{
+	//EMPTY BLOCK, NEED MEMBERLIST HEAD TO SORT BY ID NUM
+}
+
+void Warehouse::PrintItemSalesReport(string itemToSearch)
+{
+	const int TITLE = 20;
+
+	Item *ptr = NULL;
+	int totalSold = 0;
+
+	cout << left;
+	cout << setfill('*');
+	cout << setw(TITLE) << '*'	<< endl;
+	cout << "* ITEM SALES REPORT *"	<< endl;
+	cout << setw(TITLE) << '*'	<< endl;
+	cout << setfill(' ');
+	cout << endl;
+
+	ptr = inventory.GetHead();
+
+	while(ptr != NULL)
+	{
+		if(ptr->GetName() == itemToSearch)
+		{
+			totalSold = totalSold + ptr->GetQuantity();
+		}
+
+		ptr->SetNextItem(ptr->GetNextItem());
+	}
+
+	ptr = inventory.SearchItem(itemToSearch);
+	cout << setw(20/2) << ptr->GetName()
+					   << (float(totalSold) * (ptr->GetPrice()) );
+
+}
