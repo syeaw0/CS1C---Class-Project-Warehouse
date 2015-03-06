@@ -262,7 +262,9 @@ void Warehouse::PrintMemberPaidPerYearReport()
 	const int MEMBER_NAME	= 10;
 	const int TOTAL_SPENT	= 10;
 
-	Basic *perPtr=inventory.GetHead();
+	Item *perPtr;
+
+	perPtr = inventory.GetHead();
 
 
 	cout << left;

@@ -103,5 +103,5 @@ int Inventory::GetNumberOfItems()const
 
 Item *Inventory::GetHead()const
 {
-	return *head;
+	return head;
 }
