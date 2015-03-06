@@ -24,9 +24,10 @@ public:
 
 	// MUTATORS
 	void SetNumberOfItems(int amountOfItems);
-	void ReadInFile(ifstream inFile);
+	void ReadInFile(ifstream &inFile);
 	void AddToList(Item *newItem);
 	Item *SearchItem(int purchaseCode);
+	Item *SearchItem(string purchaseItemName);
 
 	// ACCESSORS
 	Item *GetHead() const;

@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 #include "MemberList.h"
 #include "Inventory.h"
 using namespace std;
@@ -42,12 +43,17 @@ public:
 	~Warehouse();
 
 	// MUTATORS
+	void LoadMembers(ifstream &inFile);
+	void LoadItems(ifstream &inFile);
 	void AddMember();
 
 	// ACCESSORS
 	void PrintSalesReport(Date aDate);
 	void PrintMemberPurchaseReport(Basic aMember);
+	void PrintTotalSalesReport();
+	void PrintItemSalesReport(string itemToSearch);
 	void PrintMemberPaidPerYearReport();
+	void PrintAmountDueByMonthReport(Date aDate);
 };
 
 #endif /* WAREHOUSE_H_ */
