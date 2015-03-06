@@ -12,6 +12,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 #include <string>
 #include "Preferred.h"
 
@@ -25,7 +26,7 @@ public:
 
 	MemberList();
 	~MemberList();
-	void CreateList();
+	void CreateList(ifstream &inFile);
 //	void DeleteMember(string deleteName);
 	Basic *SearchMember(int userId)const;
 	Basic *GetHead()const;

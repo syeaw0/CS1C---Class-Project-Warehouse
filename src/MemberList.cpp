@@ -26,6 +26,16 @@ MemberList::MemberList()
 	head = NULL;
 }
 
+MemberList::~MemberList()
+{
+
+}
+
+void MemberList::CreateList(ifstream &inFile)
+{
+
+}
+
 //	void memberList :: DeleteMember(memberInfo* head)
 //	{
 //
@@ -42,7 +52,7 @@ MemberList::MemberList()
 //
 //	}
 
-Basic *MemberList::SearchMember(int userId)const
+Basic *MemberList::SearchMember(int userId) const
 {
 	Basic *memberPtr;
 	bool found;
@@ -50,7 +60,7 @@ Basic *MemberList::SearchMember(int userId)const
 	found = false;
 	memberPtr = head;
 
-	while (memberPtr != NULL)
+	while (memberPtr != NULL && !found)
 	{
 		if (memberPtr->GetId() == userId)
 		{
@@ -63,5 +73,10 @@ Basic *MemberList::SearchMember(int userId)const
 	}
 
 	return memberPtr;
+}
+
+Basic *MemberList::GetHead() const
+{
+	return head;
 }
 

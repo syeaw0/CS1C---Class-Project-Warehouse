@@ -24,13 +24,16 @@ Date::~Date()
 
 void Date::SetDate(string newDate)
 {
-	char	aDate[10];
-	char	aDay[2];
-	char	aMonth[2];
-	char	aYear[4];
+	// VARIABLE DECLARATIONS
+	char	*aDate;
+	char	aDay[3];
+	char	aMonth[3];
+	char	aYear[5];
 	int		index;
 
-	aDate	= newDate.c_str();
+	// Convert from a string to three c-strings
+	aDate	= new char[11];
+	strcpy(aDate, newDate.c_str());
 
 	for(index = 0; index < 2; index++)
 	{
@@ -47,6 +50,7 @@ void Date::SetDate(string newDate)
 		aYear[index]	= aDate[index];
 	}
 
+	// Convert from c-strings to integers
 	day		= atoi(aDay);
 	month	= atoi(aMonth);
 	year	= atoi(aYear);
