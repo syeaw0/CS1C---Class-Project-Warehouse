@@ -33,7 +33,41 @@ MemberList::~MemberList()
 
 void MemberList::CreateList(ifstream &inFile)
 {
+	// VARIABLE DECLARATIONS
+	Basic*	memberPtr;
+	string 	name;
+	int		id;
+	string  memberType;
+	Date	expiration;
 
+	// Loop
+	do
+	{
+		getline(inFile, name);
+		inFile >> id;
+		inFile.ignore(1000, '\n');
+		getline(inFile, memberType);
+		expiration.SetDate(inFile);
+
+		if(memberType == "Basic")
+		{
+			memberPtr	= new Basic;
+		}
+		else
+		{
+			memberPtr	= new Preferred;
+		}
+
+		if(memberPtr != NULL)
+		{
+			memberPtr->SetName(name);
+			memberPtr->SetId(id);
+			memberPtr->SetExpiration(expiration);
+
+			memberPtr->SetNext(head);
+			head	= memberPtr;
+		}
+	}while(inFile && memberPtr != NULL);
 }
 
 //	void memberList :: DeleteMember(memberInfo* head)
