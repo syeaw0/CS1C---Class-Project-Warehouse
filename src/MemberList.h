@@ -1,53 +1,40 @@
 /**************************************************************************
-* AUTHOR        : Jacob Mc'Iver
-* STUDENT ID    : 265933
-* Assignment #  : Group Project
-* CLASS         : MW 12:30pm - 4:20pm
-* SECTION       : CS1C
-* DUE DATE      : 3//2015
-**************************************************************************/
+ * AUTHOR        : Jacob Mc'Iver
+ * STUDENT ID    : 265933
+ * Assignment #  : Group Project
+ * CLASS         : MW 12:30pm - 4:20pm
+ * SECTION       : CS1C
+ * DUE DATE      : 3//2015
+ **************************************************************************/
 
 #ifndef MEMBERLIST_H_
 #define MEMBERLIST_H_
 
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 #include <string>
+#include "Preferred.h"
 
 using namespace std;
 
 class MemberList
 {
-	public:
+public:
 
 	/*METHODS*/
 
 	MemberList();
+	~MemberList();
+	void CreateList(ifstream &inFile);
+//	void DeleteMember(string deleteName);
+	Basic *SearchMember(int userId);
+	Basic *GetHead()const;
 
-	void AddMember();
+private:
 
-	void DeleteMember(string deleteName);
-
-	void PrintList();
-
-	void GetFileName();
-
-	MemberList SearchId(int userId);
-
-	void  Output();
-
-
-
-	private:
-
-	 MemberList *head;
-
-	 MemberList*curr;
-
-	 MemberList*temp;
-
+	Basic* head;
 
 };
-
 
 #endif /* MEMBERLIST_H_ */
