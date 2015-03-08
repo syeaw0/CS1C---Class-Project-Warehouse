@@ -102,6 +102,11 @@ void Basic::SetNext(Basic *ptr)
 	next	= ptr;
 }
 
+void Basic::SetHead(Basic *ptr)
+{
+	head	= ptr;
+}
+
 string  	Basic::GetName()		const
 {
 	return name;
@@ -130,3 +135,9 @@ Basic   	*Basic::GetNext()		const
 {
 	return next;
 }
+
+Basic   	*Basic::GetHead()		const
+{
+	return head;
+}
+
