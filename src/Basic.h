@@ -62,6 +62,9 @@ protected:
 	float		totalSpent;	// The total amount spent
 	MemberType	type;		// The type of member
 	Basic		*next;		// A pointer to the next member
+	Basic		*head;		// A pointer to the head
+
+
 
 public:
 	/*METHODS*/
@@ -77,15 +80,19 @@ public:
 	void SetTotalSpent(float anAmount);
 	void SetMemberType(MemberType aType);
 	void SetNext(Basic *ptr);
+	void SetHead(Basic *ptr);
 
 	// ACCESSORS
+
 
 	string  	GetName()		const;
 	int			GetId()			const;
 	Date		GetExpiration()	const;
 	float		GetTotalSpent()	const;
-	MemberType 	GetMemberType()	const
+	MemberType 	GetMemberType()	const;
 	Basic   	*GetNext()		const;
+	Basic   	*GetHead()		const;
+
 };
 
 #endif /* BASIC_H_ */
