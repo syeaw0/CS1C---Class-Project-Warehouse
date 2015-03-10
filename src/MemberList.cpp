@@ -1,10 +1,3 @@
-/*
- * memberList.cpp
- *
- *  Created on: Feb 24, 2015
- *      Author: jmciver1
- */
-
 /**************************************************************************
  * AUTHOR        : Jacob Mc'Iver
  * STUDENT ID    : 265933
@@ -28,6 +21,8 @@ MemberList::MemberList()
 
 MemberList::~MemberList()
 {
+	// TODO
+}
 
 }
 
@@ -40,14 +35,18 @@ void MemberList::CreateList(ifstream &inFile)
 	string  memberType;
 	Date	expiration;
 
+
+
+	memberPtr = new Basic;
+
 	// Loop
-	do
+	while(inFile && memberPtr != NULL)
 	{
 		getline(inFile, name);
 		inFile >> id;
-		inFile.ignore(1000, '\n');
+		inFile.ignore(numeric_limits<streamsize>::max(), '\n');
 		getline(inFile, memberType);
-		expiration.SetDate(inFile);
+		//expiration.SetDate(inFile);
 
 		if(memberType == "Basic")
 		{
@@ -62,29 +61,37 @@ void MemberList::CreateList(ifstream &inFile)
 		{
 			memberPtr->SetName(name);
 			memberPtr->SetId(id);
-			memberPtr->SetExpiration(expiration);
-
+			//memberPtr->SetExpiration(expiration);
 			memberPtr->SetNext(head);
 			head	= memberPtr;
+			memberPtr = new Basic;
 		}
-	}while(inFile && memberPtr != NULL);
+
+
+	}
+	delete memberPtr;
+	memberPtr = NULL;
 }
 
-//	void memberList :: DeleteMember(memberInfo* head)
-//	{
+//Need Contingency for Three Cases
+//Removing from Head (The first item in list)
+//Removing from Middle
+//Removing from Last
+//void MemberList::DeleteMember(string membertoRemove)
+//{
 //
-//		 memberInfo* memberPtr;
-//		 memberPtr = head;
+//	 MemberList* memberPtr;
+//	 memberPtr = head;
 //
-//		 if (head !=NULL )
-//		 {
-//			 memberPtr = memberPtr -> next;
-//			 head = memberPtr;
-//		 }
+//	 if (head !=NULL )
+//	 {
+//		 memberPtr = memberPtr -> next;
+//		 head = memberPtr;
+//	 }
 //
-//		delete memberPtr;
+//	delete memberPtr;
 //
-//	}
+//}
 
 Basic *MemberList::SearchMember(int userId) const
 {

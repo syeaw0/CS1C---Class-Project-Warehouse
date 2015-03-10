@@ -49,11 +49,15 @@ public:
 
 	// ACCESSORS
 	void PrintSalesReport(Date aDate);
-	void PrintMemberPurchaseReport(Basic aMember);
+	void PrintMemberPurchaseReport(Basic aMember, int search);
 	void PrintTotalSalesReport();
 	void PrintItemSalesReport(string itemToSearch);
 	void PrintMemberPaidPerYearReport();
 	void PrintAmountDueByMonthReport(Date aDate);
+
+	void PrintRebateReport();
+	void OutputMembers();
+	void OutputInventory();
 };
 
 #endif /* WAREHOUSE_H_ */
