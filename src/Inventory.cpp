@@ -51,14 +51,14 @@ void Inventory::ReadInFile(ifstream &inFile)
 		//itemPtr->SetDatePurchased(aDate);
 		inFile >> memberId;
 		itemPtr->SetPurchaseID(memberId);
-		inFile.ignore(1000, '\n');
+		inFile.ignore(numeric_limits<streamsize>::max(), '\n');
 		getline(inFile, itemName);
 		itemPtr->SetItemName(itemName);
 		inFile >> cost;
 		itemPtr->SetItemPrice(cost);
 		inFile >> quantity;
 		itemPtr->SetItemQuantity(quantity);
-		inFile.ignore(1000, '\n');
+		inFile.ignore(numeric_limits<streamsize>::max(), '\n');
 
 		itemPtr->SetNextItem(head);
 		head	= itemPtr;

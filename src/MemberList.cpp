@@ -44,7 +44,7 @@ void MemberList::CreateList(ifstream &inFile)
 	{
 		getline(inFile, name);
 		inFile >> id;
-		inFile.ignore(1000, '\n');
+		inFile.ignore(numeric_limits<streamsize>::max(), '\n');
 		getline(inFile, memberType);
 		//expiration.SetDate(inFile);
 
@@ -73,21 +73,25 @@ void MemberList::CreateList(ifstream &inFile)
 	memberPtr = NULL;
 }
 
-//	void memberList :: DeleteMember(memberInfo* head)
-//	{
+//Need Contingency for Three Cases
+//Removing from Head (The first item in list)
+//Removing from Middle
+//Removing from Last
+//void MemberList::DeleteMember(string membertoRemove)
+//{
 //
-//		 memberInfo* memberPtr;
-//		 memberPtr = head;
+//	 MemberList* memberPtr;
+//	 memberPtr = head;
 //
-//		 if (head !=NULL )
-//		 {
-//			 memberPtr = memberPtr -> next;
-//			 head = memberPtr;
-//		 }
+//	 if (head !=NULL )
+//	 {
+//		 memberPtr = memberPtr -> next;
+//		 head = memberPtr;
+//	 }
 //
-//		delete memberPtr;
+//	delete memberPtr;
 //
-//	}
+//}
 
 Basic *MemberList::SearchMember(int userId)
 {
