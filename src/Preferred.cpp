@@ -11,6 +11,7 @@
 
 Preferred::Preferred()
 {
+	SetMemberType(PREFERRED);
 	rebate	= 0.06;
 }
 
