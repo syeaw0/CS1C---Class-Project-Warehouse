@@ -1,3 +1,5 @@
+
+
 /**************************************************************************
  * AUTHOR        : Jacob Mc'Iver
  * STUDENT ID    : 265933
@@ -7,7 +9,7 @@
  * DUE DATE      : 3//2015
  **************************************************************************/
 
-#include "MemberList.h"
+#include "memberList.h"
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
@@ -17,48 +19,106 @@ using namespace std;
 MemberList::MemberList()
 {
 	head = NULL;
-	curr = NULL;
-	temp = NULL;
 }
 
-void MemberList::AddMember()
+MemberList::~MemberList()
 {
-	memberInfo *memberPtr = new memberInfo;
 
-	//CALC - assigns variables to struct members
-	getline(inFile, memberPtr->name);
-	inFile >> memberPtr->id;
-	inFile.ignore(1000, '\n');
-	getline(inFile, memberPtr->membership);
-	getline(inFile, memberPtr->expiration);
+}
 
-	//CALC - links new node to stack
-	memberPtr->next = head;
-	head = memberPtr;
+void MemberList::CreateList(ifstream &inFile)
+{
+	// VARIABLE DECLARATIONS
+	Basic*	memberPtr;
+	string 	name;
+	int		id;
+	string  memberType;
+	Date	expiration;
+
+
+
+	memberPtr = new Basic;
+
+	// Loop
+	while(inFile && memberPtr != NULL)
+	{
+		getline(inFile, name);
+		inFile >> id;
+		inFile.ignore(1000, '\n');
+		getline(inFile, memberType);
+		//expiration.SetDate(inFile);
+
+		if(memberType == "Basic")
+		{
+			memberPtr	= new Basic;
+		}
+		else
+		{
+			memberPtr	= new Preferred;
+		}
+
+		if(memberPtr != NULL)
+		{
+			memberPtr->SetName(name);
+			memberPtr->SetId(id);
+			//memberPtr->SetExpiration(expiration);
+			memberPtr->SetNext(head);
+			head	= memberPtr;
+			memberPtr = new Basic;
+		}
+
+
+	}
+	delete memberPtr;
 	memberPtr = NULL;
 }
 
-void MemberList::DeleteMember(string deleteName)
+//	void memberList :: DeleteMember(memberInfo* head)
+//	{
+//
+//		 memberInfo* memberPtr;
+//		 memberPtr = head;
+//
+//		 if (head !=NULL )
+//		 {
+//			 memberPtr = memberPtr -> next;
+//			 head = memberPtr;
+//		 }
+//
+//		delete memberPtr;
+//
+//	}
+
+Basic *MemberList::SearchMember(int userId)
 {
-	// havent written yet
+	Basic *memberPtr;
+	bool found;
+	int y;
+
+	found = false;
+	memberPtr = head;
+	y = memberPtr->GetId();
+	cout  << y;
+
+
+//	for(int i=0; i < 11; i++)
+//	{
+//		if (memberPtr->GetId() == userId)
+//		{
+//			cout << "test " << memberPtr->GetId() << endl;
+//			found = true;
+//		}
+//		else
+//		{
+//			memberPtr = memberPtr->GetNext();
+//		}
+//	}
+
+	return memberPtr;
 }
 
-void MemberList::PrintList()const
+Basic *MemberList::GetHead() const
 {
-	curr = head;
-
-	while (curr != NULL)
-	{
-		cout << "Name: " << curr->name << endl;
-		cout << "ID: " << curr->id << endl;
-		cout << "Membership state: " << curr->membership << endl;
-		cout << "Expiration date : ";
-		cout << curr->expiration << endl << endl;
-		curr = curr->next;
-	}
+	return head;
 }
 
-void MemberList::GetFileName(string fileName)const
-{
-	inFile.open(fileName.c_str());
-}

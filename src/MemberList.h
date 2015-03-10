@@ -11,9 +11,9 @@
 #define MEMBERLIST_H_
 
 #include <iostream>
-#include <cstdlib>
-#include <string>
+#include <iomanip>
 #include <fstream>
+#include <string>
 #include "Preferred.h"
 
 using namespace std;
@@ -26,31 +26,14 @@ public:
 
 	MemberList();
 	~MemberList();
-
-	// MUTATORS
-	void AddMember();
-	void DeleteMember(string deleteName);
-
-	// ACCESSORS
-	void PrintList()const;
-	void GetFileName(string fileName)const;
-	Basic* SearchMember(int anId)const;
+	void CreateList(ifstream &inFile);
+//	void DeleteMember(string deleteName);
+	Basic *SearchMember(int userId);
+	Basic *GetHead()const;
 
 private:
-	struct memberInfo
-	{
-		string name;
-		int id;
-		string membership;
-		string expiration;
-		memberInfo *next;
-	};
 
-	memberInfo *head;
-	memberInfo *curr;
-	memberInfo *temp;
-	string fileName;
-	ifstream inFile;
+	Basic* head;
 
 };
 
