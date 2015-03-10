@@ -76,7 +76,7 @@ void Warehouse::AddMember()
  *  <Outputs a report with information associated
  *   with a particular date>
  *************************************************/
-void Warehouse::PrintSalesReport(Date aDate)
+void Warehouse::PrintSalesReport(Date aDate) //OBJECTIVE 1
 {
 	// CONSTANT DECLARATIONS
 	const int TITLE = 32;
@@ -177,11 +177,11 @@ void Warehouse::PrintSalesReport(Date aDate)
 
 	cout << right;
 }
-
+//Output All Members (Non-objective)
 void Warehouse :: OutputMembers()
 {
 	Basic *memberPtr;
-	Date datePtr;
+	//Date datePtr;
 
 	memberPtr = members.GetHead();
 
@@ -204,11 +204,11 @@ void Warehouse :: OutputMembers()
 	}
 
 }
-
+//Outputs Entire Item list from Inventory (Non-objective)
 void Warehouse :: OutputInventory()
 {
 	Item* itemPtr;
-	Date datePtr;
+	//Date datePtr;
 
 	itemPtr = inventory.GetHead();
 
@@ -224,7 +224,7 @@ void Warehouse :: OutputInventory()
 	}
 
 }
-
+//OBJECTIVE 2
 void Warehouse::PrintMemberPurchaseReport(Basic aMember, int search)
 {
 	// CONSTANT DECLARATIONS
@@ -319,6 +319,7 @@ void Warehouse::PrintMemberPurchaseReport(Basic aMember, int search)
 	cout << right;
 }
 
+//OBJECTIVE 3
 void Warehouse::PrintTotalSalesReport()
 {
 	Basic *memberPtr;
@@ -348,9 +349,11 @@ void Warehouse::PrintTotalSalesReport()
 	}
 
 }
+//OBJECTIVE 4
 void Warehouse::PrintItemSalesReport(string itemToSearch)
 {
-	const int TITLE = 20;
+	const int TITLE = 21;
+
 	Item *ptr = NULL;
 	int totalSold = 0;
 	cout << left;
@@ -367,13 +370,17 @@ void Warehouse::PrintItemSalesReport(string itemToSearch)
 		{
 			totalSold = totalSold + ptr->GetQuantity();
 		}
-		ptr->SetNextItem(ptr->GetNextItem());
+		ptr = ptr->GetNextItem();
 	}
 	ptr = inventory.SearchItem(itemToSearch);
-	cout << setw(20 / 2) << ptr->GetName()
-			<< (float(totalSold) * (ptr->GetPrice()));
-}
+	cout << setw(20 / 2) << ptr->GetName() << " Sold: " << totalSold;
+	cout << endl;
+	cout << "Generated $" << (float(totalSold) * (ptr->GetPrice()));
+	cout << endl << endl;
 
+
+}
+//OBJECTIVE 7
 void Warehouse::PrintMemberPaidPerYearReport()
 {
 	const int TITLE = 29;
@@ -426,7 +433,7 @@ void Warehouse::PrintMemberPaidPerYearReport()
 	cout << right;
 
 }
-
+//OBJECTIVE 8
 void Warehouse::PrintAmountDueByMonthReport(Date aDate)
 {
 	const int TITLE = 29;
@@ -479,6 +486,7 @@ void Warehouse::PrintAmountDueByMonthReport(Date aDate)
 	cout << right;
 }
 
+//OBJECTIVE 6
 void Warehouse::PrintRebateReport()
 {
 	Basic *memberPtr;

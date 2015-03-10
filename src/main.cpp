@@ -15,6 +15,8 @@ int main()
 	MemberList members;
 	int choice;
 	int search;
+	string subject;
+
 
 	itemInFile.open("assets/day1.txt");
 	memberInFile.open("assets/warehouse shoppers.txt");
@@ -22,7 +24,6 @@ int main()
 	warehouse.LoadMembers(memberInFile);
 	warehouse.LoadItems(itemInFile);
 	testDate.SetDate(1, 2, 2015);
-
 
 
 	do
@@ -47,7 +48,11 @@ int main()
 
 		case 3:				warehouse.PrintTotalSalesReport();
 							break;
-		case 4:
+
+		case 4:				cout << "Enter the item you would like to see"
+								 << "a report on: ";
+							getline(cin, subject);
+							warehouse.PrintItemSalesReport(subject);
 							break;
 
 		case 5: 			warehouse.PrintRebateReport();
@@ -60,7 +65,6 @@ int main()
 							break;
 		}
 	}while(choice != 0);
-
 
 
 	memberInFile.close();
