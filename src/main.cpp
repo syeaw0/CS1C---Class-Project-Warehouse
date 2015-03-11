@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <limits>
 #include "Warehouse.h"
 #include "Myheader.h"
 using namespace std;
@@ -30,7 +31,7 @@ int main()
 		cout << MENU;
 		cout << "Enter your choice: ";
 		cin >> choice;
-		cin.ignore(1000,'\n');
+		cin.ignore(numeric_limits<streamsize>::max(),'\n');
 		cout << endl << endl;
 
 		switch(choice)

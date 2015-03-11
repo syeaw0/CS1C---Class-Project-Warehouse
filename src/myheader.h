@@ -13,6 +13,7 @@
 
 using namespace std;
 
+//Someone Update this to reflect main.cpp menu choices
 const string MENU = "========================================\n"
 					"	Warehouse ProtoType\n"
 					"========================================\n"

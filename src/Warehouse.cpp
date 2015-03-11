@@ -382,11 +382,11 @@ void Warehouse::PrintItemSalesReport(string itemToSearch)
 	cout << setw(20 / 2) << itemPtr->GetName();
 	cout <<  "QUANTITY SOLD: " << itemPtr->GetQuantity() << endl;
 	cout <<	 "TOTAL SALES: "
-	<< (float(itemPtr->GetQuantity()) * (itemPtr->GetPrice()))<< endl << endl;
+	<< (float(itemPtr->GetQuantity()) * (itemPtr->GetPrice()))
+	<< endl << endl;
 }
 
 
-}
 //OBJECTIVE 7
 void Warehouse::PrintMemberPaidPerYearReport()
 {

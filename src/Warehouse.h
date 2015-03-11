@@ -57,6 +57,10 @@ public:
 	void PrintRebateReport();
 	void OutputMembers();
 	void OutputInventory();
+	void PrintItemsSold();
+
+	void PrintMembershipDues();
+
 };
 
 #endif /* WAREHOUSE_H_ */
