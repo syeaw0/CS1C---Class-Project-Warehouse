@@ -40,10 +40,12 @@ int main()
 							break;
 
 		case 2:				cout << "Enter the Id of the member you would"
-									" like to search for: " << endl << endl;
+									" like to search for: ";
 							cin >> idSearch;
 
-							warehouse.PrintMemberPurchaseReport(testMember,idSearch);
+							cout << endl << endl;
+
+							warehouse.PrintMemberPurchaseReport(idSearch);
 							break;
 
 		case 3:				warehouse.PrintTotalSalesReport();
