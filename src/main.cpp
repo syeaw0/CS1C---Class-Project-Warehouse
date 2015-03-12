@@ -1,6 +1,6 @@
-
 #include <iostream>
 #include <fstream>
+#include <limits>
 #include "Warehouse.h"
 #include "Myheader.h"
 using namespace std;
@@ -18,13 +18,12 @@ int main()
 	int idSearch;
 	string itemNameSearch;
 
-	itemInFile.open("day1.txt");
-	memberInFile.open("warehouse shoppers.txt");
+	itemInFile.open("assets/day1.txt");
+	memberInFile.open("assets/warehouse shoppers.txt");
 
 	warehouse.LoadMembers(memberInFile);
 	warehouse.LoadItems(itemInFile);
 	testDate.SetDate(1, 2, 2015);
-
 
 
 	do
@@ -32,7 +31,7 @@ int main()
 		cout << MENU;
 		cout << "Enter your choice: ";
 		cin >> choice;
-		cin.ignore(1000,'\n');
+		cin.ignore(numeric_limits<streamsize>::max(),'\n');
 		cout << endl << endl;
 
 		switch(choice)
@@ -76,7 +75,6 @@ int main()
 							break;
 		}
 	}while(choice != 0);
-
 
 
 	memberInFile.close();
