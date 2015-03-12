@@ -45,7 +45,7 @@ void Inventory::ReadInFile(ifstream &inFile)
 	int i;
 
 	itemPtr = new Item;
-	while(inFile && itemPtr != NULL)
+	while(!inFile.eof() && itemPtr != NULL)
 	{
 		//aDate.SetDate(inFile);
 		//itemPtr->SetDatePurchased(aDate);

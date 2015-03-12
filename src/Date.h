@@ -55,7 +55,6 @@ public:
 
 	// MUTATORS
 
-	void SetDate (string aDate);
 	void SetDate (ifstream& inFile);
 	void SetDate (int aDay,
 				  int aMonth,

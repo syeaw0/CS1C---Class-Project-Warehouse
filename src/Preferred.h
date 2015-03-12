@@ -39,6 +39,7 @@ private:
 public:
 	/*METHODS*/
 	Preferred();
+
 	~Preferred();
 
 	// MUTATORS

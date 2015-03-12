@@ -5,13 +5,13 @@
 #include "Myheader.h"
 using namespace std;
 
+
 int main()
 {
 	ifstream 	memberInFile;
 	ifstream	itemInFile;
 	Warehouse	warehouse;
 	Date		testDate;
-
 	Basic   testMember;
 	MemberList members;
 	int choice;
@@ -75,6 +75,7 @@ int main()
 							break;
 		}
 	}while(choice != 0);
+
 
 	memberInFile.close();
 	itemInFile.close();

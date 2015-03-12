@@ -54,7 +54,6 @@ public:
 	void PrintItemSalesReport(string itemToSearch);
 	void PrintMemberPaidPerYearReport();
 	void PrintAmountDueByMonthReport(Date aDate);
-
 	void PrintRebateReport();
 	void OutputMembers();
 	void OutputInventory();

@@ -22,40 +22,6 @@ Date::~Date()
 
 }
 
-void Date::SetDate(string newDate)
-{
-	// VARIABLE DECLARATIONS
-	char	*aDate;
-	char	aDay[3];
-	char	aMonth[3];
-	char	aYear[5];
-	int		index;
-
-	// Convert from a string to three c-strings
-	aDate	= new char[11];
-	strcpy(aDate, newDate.c_str());
-
-	for(index = 0; index < 2; index++)
-	{
-		aDay[index]		= aDate[index];
-	}
-
-	for(index = 3; index < 5; index++)
-	{
-		aMonth[index]	= aDate[index];
-	}
-
-	for(index = 6; index < 10; index++)
-	{
-		aYear[index]	= aDate[index];
-	}
-
-	// Convert from c-strings to integers
-	day		= atoi(aDay);
-	month	= atoi(aMonth);
-	year	= atoi(aYear);
-}
-
 void Date::SetDate(ifstream& inFile)
 {
 	char	aDate[10];
@@ -64,7 +30,7 @@ void Date::SetDate(ifstream& inFile)
 	char	aYear[4];
 	int		index;
 
-	inFile.getline(aDate, 10);
+	inFile.getline(aDate, 11);
 
 	for(index = 0; index < 2; index++)
 	{
@@ -204,6 +170,28 @@ bool Date::CompareDate(Date aDate)	const
 
 void Date::Print()const
 {
-	cout << month << '/' << day << '/' << year << endl;
+	if(month < 10)
+	{
+		cout << '0' << month;
+	}
+	else
+	{
+		cout << month;
+	}
+
+	cout << '/';
+
+	if(day < 10)
+	{
+		cout << '0' << day;
+	}
+	else
+	{
+		cout << day;
+	}
+
+	cout << '/';
+
+	cout << year;
 }
 
