@@ -79,12 +79,11 @@ void Warehouse::AddMember()
 void Warehouse::PrintSalesReport(Date aDate) //OBJECTIVE 1
 {
 	// CONSTANT DECLARATIONS
-	const int TITLE = 32;
-	const int ITEM = 10;
+	const int TITLE = 31;
+	const int ITEM = 26;
 	const int QUANTITY = 10;
 	const int COST = 10;
 	const int BUYER = 10;
-	const int NUMBERING = 4;
 
 	// VARIABLE DECLARATIONS
 	int index;
@@ -115,9 +114,9 @@ void Warehouse::PrintSalesReport(Date aDate) //OBJECTIVE 1
 	cout << endl;
 
 	// OUTPUT HEADING
-	cout << setw(ITEM) << "ITEM";
-	cout << setw(QUANTITY) << "QUANTITY";
-	cout << setw(COST) << "COST";
+	cout << setw(ITEM + 1) << "ITEM";
+	cout << setw(QUANTITY + 1) << "QUANTITY";
+	cout << setw(COST + 1) << "COST";
 	cout << setw(BUYER) << "BUYER";
 	cout << endl;
 
@@ -136,10 +135,22 @@ void Warehouse::PrintSalesReport(Date aDate) //OBJECTIVE 1
 
 	while (itemPtr != NULL)
 	{
-		cout << setw(NUMBERING) << index << '.';
-		cout << setw(ITEM - NUMBERING) << itemPtr->GetName();
-		cout << setw(QUANTITY) << itemPtr->GetQuantity();
-		cout << setw(COST) << itemPtr->GetPrice() ;
+		if(index < 10)
+		{
+			cout << index << ".  ";
+		}
+		else
+		{
+			cout << index << ". ";
+		}
+		cout << setw(ITEM - 3) << itemPtr->GetName();
+		cout << setw(QUANTITY + 1) << itemPtr->GetQuantity();
+		cout << '$';
+		cout << setw(COST) << itemPtr->GetPrice();
+
+		aMember	= members.SearchMember(itemPtr->GetBuyerID());
+		cout << aMember->GetName();
+
 		itemPtr = itemPtr->GetNextItem();
 		cout << endl;
 		index++;

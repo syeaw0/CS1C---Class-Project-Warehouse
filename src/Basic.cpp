@@ -11,6 +11,10 @@
 
 Basic::Basic()
 {
+	static int _index	= 0;
+	_index++;
+	cout << _index << " members added\n\n";
+
 	name.clear();
 	id			= 0;
 	totalSpent	= 0;
@@ -20,7 +24,9 @@ Basic::Basic()
 
 Basic::~Basic()
 {
-
+	static int _2index	= 0;
+	_2index++;
+	cout << _2index << " members deleted\n\n";
 }
 
 /**********************************************************
@@ -102,11 +108,6 @@ void Basic::SetNext(Basic *ptr)
 	next	= ptr;
 }
 
-void Basic::SetHead(Basic *ptr)
-{
-	head	= ptr;
-}
-
 string  	Basic::GetName()		const
 {
 	return name;
@@ -134,10 +135,5 @@ MemberType 	Basic::GetMemberType()	const
 Basic   	*Basic::GetNext()		const
 {
 	return next;
-}
-
-Basic   	*Basic::GetHead()		const
-{
-	return head;
 }
 

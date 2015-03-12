@@ -30,7 +30,7 @@ void Date::SetDate(ifstream& inFile)
 	char	aYear[4];
 	int		index;
 
-	inFile.getline(aDate, 10);
+	inFile.getline(aDate, 11);
 
 	for(index = 0; index < 2; index++)
 	{
@@ -170,6 +170,28 @@ bool Date::CompareDate(Date aDate)	const
 
 void Date::Print()const
 {
-	cout << month << '/' << day << '/' << year << endl;
+	if(month < 10)
+	{
+		cout << '0' << month;
+	}
+	else
+	{
+		cout << month;
+	}
+
+	cout << '/';
+
+	if(day < 10)
+	{
+		cout << '0' << day;
+	}
+	else
+	{
+		cout << day;
+	}
+
+	cout << '/';
+
+	cout << year;
 }
 
