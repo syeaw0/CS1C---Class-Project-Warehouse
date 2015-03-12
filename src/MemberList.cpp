@@ -95,28 +95,23 @@ void MemberList::CreateList(ifstream &inFile)
 
 Basic *MemberList::SearchMember(int userId)
 {
-	Basic *memberPtr;
-	bool found;
-	int y;
+	Basic* 	memberPtr;
+	bool	found;
 
-	found = false;
-	memberPtr = head;
-	y = memberPtr->GetId();
-	cout  << y;
+	memberPtr	= head;
+	found		= false;
 
-
-//	for(int i=0; i < 11; i++)
-//	{
-//		if (memberPtr->GetId() == userId)
-//		{
-//			cout << "test " << memberPtr->GetId() << endl;
-//			found = true;
-//		}
-//		else
-//		{
-//			memberPtr = memberPtr->GetNext();
-//		}
-//	}
+	while(memberPtr != NULL && !found)
+	{
+		if(memberPtr->GetId() == userId)
+		{
+			found = true;
+		}
+		else
+		{
+			memberPtr	= memberPtr->GetNext();
+		}
+	}
 
 	return memberPtr;
 }
