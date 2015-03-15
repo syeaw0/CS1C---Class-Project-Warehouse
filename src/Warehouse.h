@@ -49,7 +49,7 @@ public:
 
 	// ACCESSORS
 	void PrintSalesReport(Date aDate);
-	void PrintMemberPurchaseReport(Basic aMember, int search);
+	void PrintMemberPurchaseReport(int search);
 	void PrintTotalSalesReport();
 	void PrintItemSalesReport(string itemToSearch);
 	void PrintMemberPaidPerYearReport();

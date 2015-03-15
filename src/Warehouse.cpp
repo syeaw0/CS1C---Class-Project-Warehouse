@@ -83,7 +83,7 @@ void Warehouse::PrintSalesReport(Date aDate) //OBJECTIVE 1
 	const int ITEM = 26;
 	const int QUANTITY = 10;
 	const int COST = 10;
-	const int BUYER = 10;
+	const int BUYER = 17;
 
 	// VARIABLE DECLARATIONS
 	int index;
@@ -151,13 +151,15 @@ void Warehouse::PrintSalesReport(Date aDate) //OBJECTIVE 1
 		aMember	= members.SearchMember(itemPtr->GetBuyerID());
 		cout << aMember->GetName();
 
+		totalRevenue += itemPtr->GetPrice() * itemPtr->GetQuantity();
+
 		itemPtr = itemPtr->GetNextItem();
 		cout << endl;
 		index++;
 	}
 
 	cout << setfill('-');
-	cout << setw(ITEM + QUANTITY + COST + BUYER) << '-';
+	cout << setw(ITEM + QUANTITY + COST + BUYER + 3) << '-';
 	cout << endl << endl;
 
 	cout << "TOTAL NUMBER OF MEMBERS\n";
@@ -236,11 +238,11 @@ void Warehouse :: OutputInventory()
 
 }
 //OBJECTIVE 2
-void Warehouse::PrintMemberPurchaseReport(Basic aMember, int search)
+void Warehouse::PrintMemberPurchaseReport(int search)
 {
 	// CONSTANT DECLARATIONS
 	const int TITLE = 26;
-	const int ITEM = 10;
+	const int ITEM = 24;
 	const int QUANTITY = 10;
 	const int COST = 10;
 
@@ -248,7 +250,6 @@ void Warehouse::PrintMemberPurchaseReport(Basic aMember, int search)
 	int index;
 	int totalPurchases;
 	bool noItemsPurchased;
-	bool memberFound;
 	Item* perPtr;
 	Basic *memberPtr;
 
@@ -262,25 +263,13 @@ void Warehouse::PrintMemberPurchaseReport(Basic aMember, int search)
 	cout << endl;
 
 	// MEMBER INITIALIZATIONS
-	memberPtr = members.GetHead();
-	memberFound = false;
+	memberPtr = members.SearchMember(search);
 
-	while(memberPtr!=NULL && !memberFound)
-	{
-		if(memberPtr->GetId() == search)
-		{
-			memberFound = true;
-		}
-		else
-		{
-			memberPtr = memberPtr->GetNext();
-		}
-	}
-	cout << "NAME: " << memberPtr->GetName();;
-	cout << "ID:   " << memberPtr->GetId();
+	cout << "NAME: " << memberPtr->GetName() << endl;
+	cout << "ID:   " << memberPtr->GetId()	 << endl << endl;
 
-	cout << setw(ITEM) << "ITEM";
-	cout << setw(QUANTITY) << "QUANTITY";
+	cout << setw(ITEM + 1) << "ITEM";
+	cout << setw(QUANTITY + 1) << "QUANTITY";
 	cout << setw(COST) << "COST";
 	cout << endl;
 
@@ -288,6 +277,7 @@ void Warehouse::PrintMemberPurchaseReport(Basic aMember, int search)
 	cout << setw(ITEM) << '-' << ' ';
 	cout << setw(QUANTITY) << '-' << ' ';
 	cout << setw(COST) << '-';
+	cout << setfill(' ');
 	cout << endl;
 
 	// Loop for Purchases
@@ -300,18 +290,25 @@ void Warehouse::PrintMemberPurchaseReport(Basic aMember, int search)
 	{
 		if (perPtr->GetBuyerID() == memberPtr->GetId())
 		{
-			cout << index << ". " << endl;
-			cout << setw(ITEM - 4) << perPtr->GetName();
-			cout << setw(QUANTITY) << perPtr->GetQuantity();
-			cout << setw(COST) << perPtr->GetPrice();
+			if(index < 10)
+			{
+				cout << index << ".  ";
+			}
+			else
+			{
+				cout << index << ". ";
+			}
+			cout << setw(ITEM - 3) 		<< perPtr->GetName();
+			cout << setw(QUANTITY + 1)  << perPtr->GetQuantity();
+			cout << setw(COST) 			<< perPtr->GetPrice();
 			cout << endl;
 
 			totalPurchases++;
+			index++;
 			noItemsPurchased = false;
 		}
 
 		perPtr = perPtr->GetNextItem();
-		index++;
 	}
 
 	if (noItemsPurchased)
@@ -324,7 +321,7 @@ void Warehouse::PrintMemberPurchaseReport(Basic aMember, int search)
 	cout << setfill(' ');
 	cout << endl << endl;
 
-	cout << "TOTAL PURCHASES: ";
+	cout << "TOTAL PURCHASES: " << totalPurchases;
 	cout << endl << endl;
 
 	cout << right;
