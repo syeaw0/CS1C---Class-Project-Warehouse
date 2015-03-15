@@ -523,6 +523,7 @@ void Warehouse::PrintRebateReport()
 	cout << endl;
 }
 
+//Objective 5
 void Warehouse::PrintItemsSold()
 {
 	Item *itemPtr;

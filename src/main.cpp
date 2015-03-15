@@ -75,6 +75,9 @@ int main()
 
 		case 10: 			warehouse.OutputInventory();
 							break;
+
+		case 11:			warehouse.PrintAmountDueByMonthReport(testDate);
+							break;
 		}
 	}while(choice != 0);
 

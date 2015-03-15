@@ -9,6 +9,7 @@
 **************************************************/
 
 #include "Date.h"
+#include <limits>
 
 Date::Date()
 {
@@ -24,32 +25,23 @@ Date::~Date()
 
 void Date::SetDate(ifstream& inFile)
 {
-	char	aDate[10];
-	char	aDay[2];
-	char	aMonth[2];
-	char	aYear[4];
-	int		index;
+	int aDay;
+	int aMonth;
+	int aYear;
 
-	inFile.getline(aDate, 11);
+	inFile >> aMonth;
+	inFile.ignore(numeric_limits<streamsize>::max(), '/');
 
-	for(index = 0; index < 2; index++)
-	{
-		aDay[index]		= aDate[index];
-	}
+	inFile >> aDay;
+	inFile.ignore(numeric_limits<streamsize>::max(), '/');
 
-	for(index = 3; index < 5; index++)
-	{
-		aMonth[index]	= aDate[index];
-	}
+	inFile >> aYear;
+	inFile.ignore(numeric_limits<streamsize>::max(), '\n');
 
-	for(index = 6; index < 10; index++)
-	{
-		aYear[index]	= aDate[index];
-	}
 
-	day		= atoi(aDay);
-	month	= atoi(aMonth);
-	year	= atoi(aYear);
+	day		= aDay;
+	month	= aMonth;
+	year	= aYear;
 }
 
 /**********************************************************
