@@ -276,58 +276,66 @@ void Warehouse::PrintMemberPurchaseReport(Basic aMember, int search)
 			memberPtr = memberPtr->GetNext();
 		}
 	}
-	cout << "NAME: " << memberPtr->GetName();;
-	cout << "ID:   " << memberPtr->GetId();
 
-	cout << setw(ITEM) << "ITEM";
-	cout << setw(QUANTITY) << "QUANTITY";
-	cout << setw(COST) << "COST";
-	cout << endl;
-
-	cout << setfill('-');
-	cout << setw(ITEM) << '-' << ' ';
-	cout << setw(QUANTITY) << '-' << ' ';
-	cout << setw(COST) << '-';
-	cout << endl;
-
-	// Loop for Purchases
-	index = 1;
-	totalPurchases = 0;
-	perPtr = inventory.GetHead();
-	noItemsPurchased = true;
-
-	while (perPtr != NULL)
+	if(memberFound == true)
 	{
-		if (perPtr->GetBuyerID() == memberPtr->GetId())
-		{
-			cout << index << ". " << endl;
-			cout << setw(ITEM - 4) << perPtr->GetName();
-			cout << setw(QUANTITY) << perPtr->GetQuantity();
-			cout << setw(COST) << perPtr->GetPrice();
-			cout << endl;
+		cout << "NAME: " << memberPtr->GetName();;
+		cout << "ID:   " << memberPtr->GetId();
 
-			totalPurchases++;
-			noItemsPurchased = false;
+		cout << setw(ITEM) << "ITEM";
+		cout << setw(QUANTITY) << "QUANTITY";
+		cout << setw(COST) << "COST";
+		cout << endl;
+
+		cout << setfill('-');
+		cout << setw(ITEM) << '-' << ' ';
+		cout << setw(QUANTITY) << '-' << ' ';
+		cout << setw(COST) << '-';
+		cout << endl;
+
+		// Loop for Purchases
+		index = 1;
+		totalPurchases = 0;
+		perPtr = inventory.GetHead();
+		noItemsPurchased = true;
+
+		while (perPtr != NULL)
+		{
+			if (perPtr->GetBuyerID() == memberPtr->GetId())
+			{
+				cout << index << ". " << endl;
+				cout << setw(ITEM - 4) << perPtr->GetName();
+				cout << setw(QUANTITY) << perPtr->GetQuantity();
+				cout << setw(COST) << perPtr->GetPrice();
+				cout << endl;
+
+				totalPurchases++;
+				noItemsPurchased = false;
+			}
+
+			perPtr = perPtr->GetNextItem();
+			index++;
 		}
 
-		perPtr = perPtr->GetNextItem();
-		index++;
-	}
+		if (noItemsPurchased)
+		{
+			cout << "<No items were puchased by this user>\n";
+		}
 
-	if (noItemsPurchased)
+		cout << setfill('-');
+		cout << setw(ITEM + QUANTITY + COST) << '-';
+		cout << setfill(' ');
+		cout << endl << endl;
+
+		cout << "TOTAL PURCHASES: ";
+		cout << endl << endl;
+
+		cout << right;
+	}
+	else
 	{
-		cout << "<No items were puchased by this user>\n";
+		cout << " MEMBER WAS NOT FOUND" << endl << endl;
 	}
-
-	cout << setfill('-');
-	cout << setw(ITEM + QUANTITY + COST) << '-';
-	cout << setfill(' ');
-	cout << endl << endl;
-
-	cout << "TOTAL PURCHASES: ";
-	cout << endl << endl;
-
-	cout << right;
 }
 
 //OBJECTIVE 3
