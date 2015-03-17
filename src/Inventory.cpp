@@ -130,3 +130,39 @@ Item *Inventory::GetHead()const
 {
 	return head;
 }
+
+void Inventory::ReadInFileTest(ifstream &inFile)
+{
+	Item *itemPtr;
+	Date aDate;
+	int memberId;
+	string itemName;
+	float cost;
+	int quantity;
+	int i;
+
+	itemPtr = new Item;
+	while(inFile && itemPtr != NULL)
+	{
+		itemPtr->SetNextItem(head);
+		head = itemPtr;
+		//aDate.SetDate(inFile);
+		//itemPtr->SetDatePurchased(aDate);
+		inFile >> memberId;
+		itemPtr->SetPurchaseID(memberId);
+		inFile.ignore(1000, '\n');
+		getline(inFile, itemName);
+		itemPtr->SetItemName(itemName);
+		inFile >> cost;
+		itemPtr->SetItemPrice(cost);
+		inFile >> quantity;
+		itemPtr->SetItemQuantity(quantity);
+		inFile.ignore(1000, '\n');
+
+		itemPtr	= itemPtr->GetNextItem();
+		itemPtr	= new Item;
+	}
+
+	delete itemPtr;
+	itemPtr = NULL;
+}
