@@ -22,13 +22,8 @@ using namespace std;
 
 /**************************************************
  * CLASS Warehouse
- * ------------------------------------------------
  * The Warehouse class manages the members and the
  * inventory and outputs different reports.
- * ------------------------------------------------
- * ATTRIBUTES:
- *
- * METHODS:
  **************************************************/
 class Warehouse
 {

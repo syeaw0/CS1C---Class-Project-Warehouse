@@ -26,31 +26,53 @@ Warehouse::~Warehouse()
 
 }
 
+/**********************************************************
+ * LoadMembers
+ * --------------------------------------------------------
+ * This member function creates a linked list from a file.
+ * --------------------------------------------------------
+ * PRE-CONDITIONS:
+ * 	inFile		: The input file
+ *
+ * POST-CONDITIONS:
+ * 	<A linked list of members is created>
+ **********************************************************/
 void Warehouse::LoadMembers(ifstream &inFile)
 {
 	members.CreateList(inFile);
 }
 
+/**********************************************************
+ * LoadItems
+ * --------------------------------------------------------
+ * This member function creates a linked list from a file.
+ * --------------------------------------------------------
+ * PRE-CONDITIONS:
+ * 	inFile		: The input file
+ *
+ * POST-CONDITIONS:
+ * 	<A linked list of items is created>
+ **********************************************************/
 void Warehouse::LoadItems(ifstream &inFile)
 {
 	inventory.ReadInFile(inFile);
 }
 
-/*************************************************
+/***********************************************************
  * PrintSalesReport
- * -----------------------------------------------
- * This member function prints a sales report. It
- * searches for a date and outputs the information
- * associated with that date.
- * -----------------------------------------------
+ * ---------------------------------------------------------
+ * This member function prints a sales report. It searches
+ * for a date and outputs the information associated with
+ * that date.
+ * ---------------------------------------------------------
  * PRE-CONDITIONS:
  * 	aDate	: A date to search for
  *
  * POST-CONDITIONS:
  *  <Outputs a report with information associated
  *   with a particular date>
- *************************************************/
-void Warehouse::PrintSalesReport(Date aDate) //OBJECTIVE 1
+ ***********************************************************/
+void Warehouse::PrintSalesReport(Date aDate) // The search date
 {
 	// CONSTANT DECLARATIONS
 	const int TITLE = 31;
@@ -142,6 +164,7 @@ void Warehouse::PrintSalesReport(Date aDate) //OBJECTIVE 1
 	cout << setw(ITEM + QUANTITY + COST + BUYER + 3) << '-';
 	cout << endl << endl;
 
+	// OUTPUT THE TOTAL NUMBER OF BASIC AND PREFERRED MEMBERS
 	cout << "TOTAL NUMBER OF MEMBERS\n";
 	cout << setw(23) << '-' << endl;
 	cout << setfill(' ');
@@ -165,11 +188,13 @@ void Warehouse::PrintSalesReport(Date aDate) //OBJECTIVE 1
 	cout << "PREFERRED: " << totalPreferred << endl;
 	cout << endl;
 
+	// OUTPUTS THE REVENUE
 	cout << "TOTAL REVENUE: $" << totalRevenue << endl;
 	cout << endl << endl;
 
 	cout << right;
 }
+
 //Output All Members (Non-objective)
 void Warehouse::OutputMembers()
 {
@@ -217,7 +242,20 @@ void Warehouse::OutputInventory()
 	}
 
 }
-//OBJECTIVE 2
+
+/***********************************************************
+ * PrintMemberPurchaseReport
+ * ---------------------------------------------------------
+ * This member function prints a member purchase report. It
+ * searches for a member by their id and outputs all the
+ * items they purchased and the total number of purchases.
+ * ---------------------------------------------------------
+ * PRE-CONDITIONS:
+ * 	search		: The id of the member to search for
+ *
+ * POST-CONDITIONS:
+ *  <Outputs the Member Purchase Report>
+ ***********************************************************/
 void Warehouse::PrintMemberPurchaseReport(int search)
 {
 	// CONSTANT DECLARATIONS
@@ -234,6 +272,7 @@ void Warehouse::PrintMemberPurchaseReport(int search)
 	Item* perPtr;
 	Basic *memberPtr;
 
+	// CHECKS SEARCH ID TO SEE IF IT IS VALID
 	do
 	{
 		memberPtr = members.GetHead();
@@ -324,6 +363,7 @@ void Warehouse::PrintMemberPurchaseReport(int search)
 	cout << setfill(' ');
 	cout << endl << endl;
 
+	// OUTPUT THE TOTAL NUMBER OF PURCHASES
 	cout << "TOTAL PURCHASES: " << totalPurchases;
 	cout << endl << endl;
 
@@ -623,8 +663,21 @@ void Warehouse::PrintItemsSold()
 	cout << endl;
 }
 
+/***********************************************************
+ * AddMember
+ * ---------------------------------------------------------
+ * This member function allows the user to add a member to
+ * the list of members
+ * ---------------------------------------------------------
+ * PRE-CONDITIONS:
+ *  <NONE>
+ *
+ * POST-CONDITIONS:
+ *  <Adds a new member to the list of members>
+ ***********************************************************/
 void Warehouse::AddMember()
 {
+	// MEMBER VARIABLES
 	string name;
 	int id;
 	int day;
@@ -635,6 +688,7 @@ void Warehouse::AddMember()
 	Date   aDate;
 	bool   invalid;
 
+	// USER INPUTS THE NEW MEMBER'S INFORMATION
 	cout << "What is the name of the new member? ";
 	getline(cin, name);
 	cout << endl;
@@ -656,6 +710,7 @@ void Warehouse::AddMember()
 	getline(cin, memberType);
 	cout << endl;
 
+	// A NEW MEMBER IS CREATED
 	memberPtr	= NULL;
 	do
 	{
@@ -677,29 +732,44 @@ void Warehouse::AddMember()
 		}
 	}while(invalid);
 
+	// THE MEMBER'S INFORMATION IS SET
 	memberPtr->SetName(name);
 	memberPtr->SetId(id);
 	aDate.SetDate(day, month, year);
 	memberPtr->SetExpiration(aDate);
 
+	// THE NEW MEMBER IS ADDED TO THE FRONT OF THE LIST
 	members.AddMember(memberPtr);
 
 	cout << memberPtr->GetName() << " has been added.\n\n";
-
-
 }
 
+/***********************************************************
+ * DeleteMember
+ * ---------------------------------------------------------
+ * This member function deletes a member from the list of
+ * members
+ * ---------------------------------------------------------
+ * PRE-CONDITIONS:
+ * 	<NONE>
+ *
+ * POST-CONDITIONS:
+ *  <Removes a member from the list>
+ ***********************************************************/
 void Warehouse::DeleteMember()
 {
+	// VARIABLE DECLARATIONS
 	Basic* delPtr;
 	string name;
 
+	// SEARCHES FOR THE MEMBER TO DELETE
 	cout << "Which member would you like to delete? ";
 	getline(cin, name);
 	cout << endl;
 
 	delPtr = members.SearchMember(name);
 
+	// DELETES THE MEMBER IF FOUND
 	if(delPtr != NULL)
 	{
 		members.DeleteMember(delPtr);
@@ -712,10 +782,24 @@ void Warehouse::DeleteMember()
 	}
 }
 
+/***********************************************************
+ * SaveChanges
+ * ---------------------------------------------------------
+ * This member function saves the changes made by outputing
+ * to a file
+ * ---------------------------------------------------------
+ * PRE-CONDITIONS:
+ * 	outFile		: The output file
+ *
+ * POST-CONDITIONS:
+ *  <Outputs all the members' information to a file>
+ ***********************************************************/
 void Warehouse::SaveChanges(ofstream &outFile)
 {
+	// VARIABLE DECLARATIONS
 	Basic* memberPtr;
 
+	// LOOP - OUTPUTS ALL THE MEMBER'S INFORMATION TO THE FILE
 	memberPtr = members.GetHead();
 
 	while(memberPtr != NULL)
@@ -781,11 +865,24 @@ void Warehouse::PrintMembershipDues()
 	cout << endl << endl;
 }
 
+/***********************************************************
+ * InputErrorCheck
+ * ---------------------------------------------------------
+ * This member function checks an integer input
+ * ---------------------------------------------------------
+ * PRE-CONDITIONS:
+ * 	prompt		: The prompt for the user
+ *
+ * POST-CONDITIONS:
+ *  input		: The user's input
+ ***********************************************************/
 int Warehouse::InputErrorCheck(string prompt)
 {
+	// VARIABLE DECLARATIONS
 	int input;
 	bool invalid;
 
+	// CHECKS IF INPUT IS AN INTEGER
 	do
 	{
 		cout << prompt;
