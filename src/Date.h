@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <ios>
 #include <cstring>
 #include <cstdlib>
 using namespace std;
@@ -69,7 +70,7 @@ public:
 	int GetMonth() 	const;
 	int GetYear() 	const;
 	bool CompareDate(Date aDate) const;
-	void Print() 	const;
+	void Print(ostream &output) 	const;
 };
 
 #endif /* DATE_H_ */

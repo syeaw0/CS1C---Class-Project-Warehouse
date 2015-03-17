@@ -81,25 +81,32 @@ void MemberList::DeleteMember(Basic* deleteMember)
 {
 
 	 Basic* memberPtr;
+	 bool   found;
 
 	 memberPtr = head;
+	 found	   = false;
 
 	 if(memberPtr->GetName() == deleteMember->GetName())
 	 {
 		 head = head->GetNext();
 	 }
-
-	 while(memberPtr->GetNext() != NULL)
+	 else
 	 {
-		 if(memberPtr->GetNext()->GetName() == deleteMember->GetName())
+		 while(memberPtr->GetNext() != NULL && !found)
 		 {
-			 memberPtr->SetNext(deleteMember->GetNext());
-			 delete deleteMember;
+			 if(memberPtr->GetNext()->GetName() == deleteMember->GetName())
+			 {
+				 memberPtr->SetNext(deleteMember->GetNext());
+				 found = true;
+			 }
+			 else
+			 {
+				 memberPtr = memberPtr->GetNext();
+			 }
 		 }
 	 }
 
-	delete memberPtr;
-
+	 delete deleteMember;
 }
 
 void  MemberList::AddMember(Basic* aMember)

@@ -160,30 +160,30 @@ bool Date::CompareDate(Date aDate)	const
  * 	<The date is printed to the console>
  ***********************************************************/
 
-void Date::Print()const
+void Date::Print(ostream &output)const
 {
 	if(month < 10)
 	{
-		cout << '0' << month;
+		output << '0' << month;
 	}
 	else
 	{
-		cout << month;
+		output << month;
 	}
 
-	cout << '/';
+	output << '/';
 
 	if(day < 10)
 	{
-		cout << '0' << day;
+		output << '0' << day;
 	}
 	else
 	{
-		cout << day;
+		output << day;
 	}
 
-	cout << '/';
+	output << '/';
 
-	cout << year;
+	output << year;
 }
 

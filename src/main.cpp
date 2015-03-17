@@ -9,6 +9,7 @@ using namespace std;
 int main()
 {
 	ifstream 	memberInFile;
+	ofstream    memberOutFile;
 	ifstream	itemInFile;
 	Warehouse	warehouse;
 	Date		testDate;
@@ -78,12 +79,30 @@ int main()
 
 		case 11:			warehouse.PrintAmountDueByMonthReport(testDate);
 							break;
+		case 12:			warehouse.AddMember();
+							break;
+		case 13:			warehouse.DeleteMember();
+							break;
+		default:			break;
 		}
 	}while(choice != 0);
 
 
 	memberInFile.close();
 	itemInFile.close();
+
+	cout << "\nSaving Changes .... \n\n";
+
+	memberOutFile.open("assets/warehouse shoppers.txt");
+
+	warehouse.SaveChanges(memberOutFile);
+
+	memberOutFile.close();
+
+	cout << "Work has been saved. Thank you for using "
+			"Project Awesome.\n";
+	cout << "Developed by the  Guardians of the Galaxy\n";
+	cout << "Special thanks to Daniel Phan - Scrum Master\n";
 
 
 	return 0;

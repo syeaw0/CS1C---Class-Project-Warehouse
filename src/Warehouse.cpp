@@ -80,7 +80,7 @@ void Warehouse::PrintSalesReport(Date aDate) //OBJECTIVE 1
 	cout << setfill('*');
 	cout << setw(TITLE) << '*' << endl;
 	cout << "* SALES REPORT FOR ";
-	aDate.Print();
+	aDate.Print(cout);
 	cout << " *" << endl;
 	cout << setw(TITLE) << '*' << endl;
 	cout << setfill(' ');
@@ -426,6 +426,7 @@ void Warehouse::PrintMemberPaidPerYearReport()
 	cout << right;
 
 }
+
 //OBJECTIVE 8
 void Warehouse::PrintAmountDueByMonthReport(Date aDate)
 {
@@ -529,26 +530,23 @@ void Warehouse::AddMember()
 	string memberType;
 	Basic* memberPtr;
 	Date   aDate;
+	bool   invalid;
 
 	cout << "What is the name of the new member? ";
 	getline(cin, name);
 	cout << endl;
 
-	cout << "What is their id? ";
-	cin  >> id;
+	id	= InputErrorCheck("What is their id? ");
 	cout << endl;
 
-	cout << "What is the date of their expiration?\n";
-	cout << "Day:   ";
-	cin  >> day;
+	day = InputErrorCheck("What is the expiration date?\n"
+						  "Day:   ");
 	cout << endl;
 
-	cout << "Month: ";
-	cin  >> month;
+	month = InputErrorCheck("Month: ");
 	cout << endl;
 
-	cout << "Year:  ";
-	cin  >> year;
+	year = InputErrorCheck("Year:  ");
 	cout << endl;
 
 	cout << "What type of member are you adding (Basic/Preferred): ";
@@ -556,14 +554,25 @@ void Warehouse::AddMember()
 	cout << endl;
 
 	memberPtr	= NULL;
-	if(memberType == "Basic")
+	do
 	{
-		memberPtr	= new Basic;
-	}
-	else
-	{
-		memberPtr 	= new Preferred;
-	}
+		invalid = false;
+
+		if(memberType == "Basic" || memberType == "basic"
+								 || memberType == "BASIC")
+		{
+			memberPtr	= new Basic;
+		}
+		else if(memberType == "Preferred" || memberType == "preferred"
+										  || memberType == "PREFERRES")
+		{
+			memberPtr 	= new Preferred;
+		}
+		else
+		{
+			invalid = true;
+		}
+	}while(invalid);
 
 	memberPtr->SetName(name);
 	memberPtr->SetId(id);
@@ -587,9 +596,44 @@ void Warehouse::DeleteMember()
 	cout << endl;
 
 	delPtr = members.SearchMember(name);
-	members.DeleteMember(delPtr);
 
-	cout << name << " has been deleted\n\n";
+	if(delPtr != NULL)
+	{
+		members.DeleteMember(delPtr);
+
+		cout << name << " has been deleted\n\n";
+	}
+	else
+	{
+		cout << name << " could not be found ... \n\n";
+	}
+}
+
+void Warehouse::SaveChanges(ofstream &outFile)
+{
+	Basic* memberPtr;
+
+	memberPtr = members.GetHead();
+
+	while(memberPtr != NULL)
+	{
+		outFile << memberPtr->GetName()	<< endl;
+		outFile << memberPtr->GetId()	<< endl;
+		if(memberPtr->GetMemberType() == BASIC)
+		{
+			outFile << "Basic";
+		}
+		else
+		{
+			outFile << "Preferred";
+		}
+
+		outFile << endl;
+		memberPtr->GetExpiration().Print(outFile);
+		outFile << endl;
+
+		memberPtr = memberPtr->GetNext();
+	}
 }
 
 void Warehouse::PrintMembershipDues()
@@ -632,5 +676,31 @@ void Warehouse::PrintMembershipDues()
 		memberPtr = memberPtr->GetNext();
 	}
 	cout << endl << endl;
+}
+
+int Warehouse::InputErrorCheck(string prompt)
+{
+	int input;
+	bool invalid;
+
+	do
+	{
+		cout << prompt;
+
+		invalid = false;
+
+		if(!(cin >> input))
+		{
+			cout << "\n**** INVALID INPUT ****\n\n";
+			cin.clear();
+
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			invalid = true;
+		}
+	}while(invalid);
+
+	cin.ignore(1000, '\n');
+
+	return input;
 }
 

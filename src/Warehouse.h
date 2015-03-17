@@ -46,6 +46,8 @@ public:
 	void LoadMembers(ifstream &inFile);
 	void LoadItems(ifstream &inFile);
 	void AddMember();
+	void DeleteMember();
+	void SaveChanges(ofstream &outFile);
 
 	// ACCESSORS
 	void PrintSalesReport(Date aDate);
@@ -58,9 +60,8 @@ public:
 	void OutputMembers();
 	void OutputInventory();
 	void PrintItemsSold();
-	void DeleteMember();
-
 	void PrintMembershipDues();
+	int  InputErrorCheck(string prompt);
 
 };
 
