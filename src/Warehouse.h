@@ -58,6 +58,7 @@ public:
 	void OutputMembers();
 	void OutputInventory();
 	void PrintItemsSold();
+	void DeleteMember();
 
 	void PrintMembershipDues();
 	void DetermineBasicToPrefferred();
