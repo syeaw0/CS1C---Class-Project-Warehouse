@@ -18,11 +18,25 @@ int main()
 	int idSearch;
 	string itemNameSearch;
 
-	itemInFile.open("assets/day1.txt");
-	memberInFile.open("assets/warehouse shoppers.txt");
-
-	warehouse.LoadMembers(memberInFile);
+	// links all the days into a linked list
+	itemInFile.open("day1.txt");
 	warehouse.LoadItems(itemInFile);
+	itemInFile.close();
+	itemInFile.open("day2.txt");
+	warehouse.LoadItemsTest(itemInFile);
+	itemInFile.close();
+	itemInFile.open("day3.txt");
+	warehouse.LoadItemsTest(itemInFile);
+	itemInFile.close();
+	itemInFile.open("day4.txt");
+	warehouse.LoadItemsTest(itemInFile);
+	itemInFile.close();
+	itemInFile.open("day5.txt");
+	warehouse.LoadItemsTest(itemInFile);
+	itemInFile.close();
+
+	memberInFile.open("warehouse shoppers.txt");
+	warehouse.LoadMembers(memberInFile);
 	testDate.SetDate(1, 2, 2015);
 
 
