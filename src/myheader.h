@@ -1,21 +1,29 @@
-/*
- * Myheader.h
- *
- *  Created on: Mar 7, 2015
- *      Author: jacob_000
- */
+/*************************************************
+ * AUTHOR 		: Daniel Phan, Samuel Yeaw,
+ * 				  Arman Jafarinia, Jacob McIver
+ * STUDENT ID 	: 243390
+ * Class Project	: Warehouse Class Project
+ * CLASS 		: CS1C
+ * SECTION 		: TTh 12:30PM - 4:20PM
+ * DUE DATE 		: 3/17/15
+ **************************************************/
 
 #ifndef MYHEADER_H_
 #define MYHEADER_H_
 
-#include <string>
-#include <iomanip>
+// PRE-PROCESSOR DIRECTIVES
 
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+#include <string>
+#include <limits>
+#include "Warehouse.h"
 using namespace std;
 
-//Someone Update this to reflect main.cpp menu choices
+// GLOBAL CONSTANTS
 const string MENU = "========================================\n"
-					"	Warehouse ProtoType\n"
+					"               Warehouse \n"
 					"========================================\n"
 					"0 - Exit\n"
 					"1.  Output Sales Report\n"
