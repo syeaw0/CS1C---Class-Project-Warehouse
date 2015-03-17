@@ -27,8 +27,10 @@ public:
 	MemberList();
 	~MemberList();
 	void CreateList(ifstream &inFile);
-//	void DeleteMember(string deleteName);
-	Basic *SearchMember(int userId)const;
+	void DeleteMember(Basic* deleteMember);
+	void  AddMember(Basic* aMember);
+	Basic *SearchMember(int userId);
+	Basic *SearchMember(string aName);
 	Basic *GetHead()const;
 
 private:

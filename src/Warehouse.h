@@ -46,14 +46,24 @@ public:
 	void LoadMembers(ifstream &inFile);
 	void LoadItems(ifstream &inFile);
 	void AddMember();
+	void DeleteMember();
+	void SaveChanges(ofstream &outFile);
 
 	// ACCESSORS
 	void PrintSalesReport(Date aDate);
-	void PrintMemberPurchaseReport(Basic aMember);
+	void PrintMemberPurchaseReport(int search);
 	void PrintTotalSalesReport();
 	void PrintItemSalesReport(string itemToSearch);
 	void PrintMemberPaidPerYearReport();
 	void PrintAmountDueByMonthReport(Date aDate);
+	void PrintRebateReport();
+	void OutputMembers();
+	void OutputInventory();
+	void PrintItemsSold();
+	void PrintMembershipDues();
+	int  InputErrorCheck(string prompt);
+	void DetermineBasicToPrefferred();
+	void DeterminePreferredToBasic();
 };
 
 #endif /* WAREHOUSE_H_ */

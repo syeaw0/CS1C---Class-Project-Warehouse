@@ -9,6 +9,7 @@
 **************************************************/
 
 #include "Date.h"
+#include <limits>
 
 Date::Date()
 {
@@ -22,68 +23,25 @@ Date::~Date()
 
 }
 
-void Date::SetDate(string newDate)
-{
-	// VARIABLE DECLARATIONS
-	char	*aDate;
-	char	aDay[3];
-	char	aMonth[3];
-	char	aYear[5];
-	int		index;
-
-	// Convert from a string to three c-strings
-	aDate	= new char[11];
-	strcpy(aDate, newDate.c_str());
-
-	for(index = 0; index < 2; index++)
-	{
-		aDay[index]		= aDate[index];
-	}
-
-	for(index = 3; index < 5; index++)
-	{
-		aMonth[index]	= aDate[index];
-	}
-
-	for(index = 6; index < 10; index++)
-	{
-		aYear[index]	= aDate[index];
-	}
-
-	// Convert from c-strings to integers
-	day		= atoi(aDay);
-	month	= atoi(aMonth);
-	year	= atoi(aYear);
-}
-
 void Date::SetDate(ifstream& inFile)
 {
-	char	aDate[10];
-	char	aDay[2];
-	char	aMonth[2];
-	char	aYear[4];
-	int		index;
+	int aDay;
+	int aMonth;
+	int aYear;
 
-	inFile.getline(aDate, 10);
+	inFile >> aMonth;
+	inFile.ignore(numeric_limits<streamsize>::max(), '/');
 
-	for(index = 0; index < 2; index++)
-	{
-		aDay[index]		= aDate[index];
-	}
+	inFile >> aDay;
+	inFile.ignore(numeric_limits<streamsize>::max(), '/');
 
-	for(index = 3; index < 5; index++)
-	{
-		aMonth[index]	= aDate[index];
-	}
+	inFile >> aYear;
+	inFile.ignore(numeric_limits<streamsize>::max(), '\n');
 
-	for(index = 6; index < 10; index++)
-	{
-		aYear[index]	= aDate[index];
-	}
 
-	day		= atoi(aDay);
-	month	= atoi(aMonth);
-	year	= atoi(aYear);
+	day		= aDay;
+	month	= aMonth;
+	year	= aYear;
 }
 
 /**********************************************************
@@ -202,8 +160,30 @@ bool Date::CompareDate(Date aDate)	const
  * 	<The date is printed to the console>
  ***********************************************************/
 
-void Date::Print()const
+void Date::Print(ostream &output)const
 {
-	cout << month << '/' << day << '/' << year << endl;
+	if(month < 10)
+	{
+		output << '0' << month;
+	}
+	else
+	{
+		output << month;
+	}
+
+	output << '/';
+
+	if(day < 10)
+	{
+		output << '0' << day;
+	}
+	else
+	{
+		output << day;
+	}
+
+	output << '/';
+
+	output << year;
 }
 

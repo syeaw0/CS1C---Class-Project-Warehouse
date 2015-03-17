@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <ios>
 #include <cstring>
 #include <cstdlib>
 using namespace std;
@@ -55,7 +56,6 @@ public:
 
 	// MUTATORS
 
-	void SetDate (string aDate);
 	void SetDate (ifstream& inFile);
 	void SetDate (int aDay,
 				  int aMonth,
@@ -70,7 +70,7 @@ public:
 	int GetMonth() 	const;
 	int GetYear() 	const;
 	bool CompareDate(Date aDate) const;
-	void Print() 	const;
+	void Print(ostream &output) 	const;
 };
 
 #endif /* DATE_H_ */

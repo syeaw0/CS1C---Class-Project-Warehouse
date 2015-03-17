@@ -63,6 +63,8 @@ protected:
 	MemberType	type;		// The type of member
 	Basic		*next;		// A pointer to the next member
 
+
+
 public:
 	/*METHODS*/
 
@@ -80,12 +82,14 @@ public:
 
 	// ACCESSORS
 
+
 	string  	GetName()		const;
 	int			GetId()			const;
 	Date		GetExpiration()	const;
 	float		GetTotalSpent()	const;
 	MemberType 	GetMemberType()	const;
 	Basic   	*GetNext()		const;
+
 };
 
 #endif /* BASIC_H_ */

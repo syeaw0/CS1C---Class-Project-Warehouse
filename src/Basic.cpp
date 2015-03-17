@@ -11,6 +11,10 @@
 
 Basic::Basic()
 {
+	static int _index	= 0;
+	_index++;
+	cout << _index << " members added\n\n";
+
 	name.clear();
 	id			= 0;
 	totalSpent	= 0;
@@ -20,7 +24,9 @@ Basic::Basic()
 
 Basic::~Basic()
 {
-
+	static int _2index	= 0;
+	_2index++;
+	cout << _2index << " members deleted\n\n";
 }
 
 /**********************************************************
@@ -130,3 +136,4 @@ Basic   	*Basic::GetNext()		const
 {
 	return next;
 }
+

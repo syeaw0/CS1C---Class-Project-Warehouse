@@ -44,14 +44,15 @@ void Inventory::ReadInFile(ifstream &inFile)
 	int quantity;
 
 	itemPtr = new Item;
-	while (inFile && itemPtr != NULL)
+	while(!inFile.eof() && itemPtr != NULL)
 	{
-		aDate.SetDate(inFile);
-		itemPtr->SetDatePurchased(aDate);
+		//aDate.SetDate(inFile);
+		//itemPtr->SetDatePurchased(aDate);
 		inFile >> memberId;
 		itemPtr->SetPurchaseID(memberId);
 		inFile.ignore(numeric_limits<streamsize>::max(), '\n');
 		getline(inFile, itemName);
+		itemPtr->SetItemName(itemName);
 		inFile >> cost;
 		itemPtr->SetItemPrice(cost);
 		inFile >> quantity;
