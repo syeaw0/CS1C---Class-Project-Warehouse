@@ -60,6 +60,8 @@ public:
 	void PrintItemsSold();
 
 	void PrintMembershipDues();
+	void DetermineBasicToPrefferred();
+	void DeterminePreferredToBasic();
 
 };
 

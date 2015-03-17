@@ -78,6 +78,15 @@ int main()
 
 		case 11:			warehouse.PrintAmountDueByMonthReport(testDate);
 							break;
+
+		case 12:			warehouse.PrintMemberPaidPerYearReport();
+							break;
+
+		case 13:			warehouse.DetermineBasicToPrefferred();
+							break;
+
+		case 14:			warehouse.DeterminePreferredToBasic();
+							break;
 		}
 	}while(choice != 0);
 
