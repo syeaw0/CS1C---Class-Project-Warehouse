@@ -1,13 +1,18 @@
-#include <iostream>
-#include <fstream>
-#include <limits>
-#include "Warehouse.h"
-#include "Myheader.h"
-using namespace std;
+/*************************************************
+ * AUTHOR 		: Daniel Phan, Samuel Yeaw,
+ * 				  Arman Jafarinia, Jacob McIver
+ * STUDENT ID 	: 243390
+ * Class Project	: Warehouse Class Project
+ * CLASS 		: CS1C
+ * SECTION 		: TTh 12:30PM - 4:20PM
+ * DUE DATE 		: 3/17/15
+ **************************************************/
 
+#include "myheader.h"
 
 int main()
 {
+	// VARIABLE DECLARATIONS
 	ifstream 	memberInFile;
 	ofstream    memberOutFile;
 	ifstream	itemInFile;
@@ -19,14 +24,16 @@ int main()
 	int idSearch;
 	string itemNameSearch;
 
+	// OPEN FILES
 	itemInFile.open("assets/day1.txt");
 	memberInFile.open("assets/warehouse shoppers.txt");
 
+	// LOAD MEMBERS AND ITEMS
 	warehouse.LoadMembers(memberInFile);
 	warehouse.LoadItems(itemInFile);
 	testDate.SetDate(1, 2, 2015);
 
-
+	// MENU
 	do
 	{
 		cout << MENU;
@@ -96,10 +103,11 @@ int main()
 		}
 	}while(choice != 0);
 
-
+	// CLOSE FILES
 	memberInFile.close();
 	itemInFile.close();
 
+	// SAVE CHANGES
 	cout << "\nSaving Changes .... \n\n";
 
 	memberOutFile.open("assets/warehouse shoppers.txt");
@@ -108,6 +116,7 @@ int main()
 
 	memberOutFile.close();
 
+	// EXIT PROGRAM
 	cout << "Work has been saved. Thank you for using "
 			"Project Awesome.\n";
 	cout << "Developed by the  Guardians of the Galaxy\n";

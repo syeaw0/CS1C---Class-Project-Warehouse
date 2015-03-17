@@ -195,19 +195,34 @@ void Warehouse::PrintSalesReport(Date aDate) // The search date
 	cout << right;
 }
 
-//Output All Members (Non-objective)
+/***********************************************************
+ * OutputMembers
+ * ---------------------------------------------------------
+ * This member function outputs all of the members and their
+ * information
+ * ---------------------------------------------------------
+ * PRE-CONDITIONS:
+ * 	<NONE>
+ *
+ * POST-CONDITIONS:
+ *  <Outputs members>
+ ***********************************************************/
 void Warehouse::OutputMembers()
 {
+	// VARIABLE DECLARATIONS
 	Basic *memberPtr;
-	//Date datePtr;
+	Date  aDate;
 
+	// LOOP - OUTPUTS EACH MEMBER
 	memberPtr = members.GetHead();
 
 	while (memberPtr != NULL)
 	{
 		cout << "NAME: " << memberPtr->GetName() << endl;
 		cout << "ID:   " << memberPtr->GetId() << endl;
-		//cout << "Expiration: " << datePtr.GetDay() << endl;
+		aDate = memberPtr->GetExpiration();
+		aDate.Print(cout);
+		cout << endl;
 		cout << "Membership   ";
 		if (memberPtr->GetMemberType() == 0)
 		{
@@ -220,14 +235,25 @@ void Warehouse::OutputMembers()
 		cout << endl << endl;
 		memberPtr = memberPtr->GetNext();
 	}
-
 }
-//Outputs Entire Item list from Inventory (Non-objective)
+
+/***********************************************************
+ * OutputInventory
+ * ---------------------------------------------------------
+ * This member function outputs the inventory
+ * ---------------------------------------------------------
+ * PRE-CONDITIONS:
+ * 	<NONE>
+ *
+ * POST-CONDITIONS:
+ *  <Outputs the inventory>
+ ***********************************************************/
 void Warehouse::OutputInventory()
 {
+	// VARIABLE DECLARATIONS
 	Item* itemPtr;
-	//Date datePtr;
 
+	// LOOP - OUTPUTS INVENTORY
 	itemPtr = inventory.GetHead();
 
 	while (itemPtr != NULL)
@@ -370,13 +396,25 @@ void Warehouse::PrintMemberPurchaseReport(int search)
 	cout << right;
 }
 
-//OBJECTIVE 3
+/***********************************************************
+ * PrintTotalSalesReport
+ * ---------------------------------------------------------
+ * This member function prints the total sales
+ * ---------------------------------------------------------
+ * PRE-CONDITIONS:
+ * 	<NONE>
+ *
+ * POST-CONDITIONS:
+ *  <Outputs the total sales report>
+ ***********************************************************/
 void Warehouse::PrintTotalSalesReport()
 {
+	// VARIABLE DECLARATIONS
 	Basic *memberPtr;
 	Item *itemPtr;
 	Date datePtr;
 	bool matches;
+
 
 	memberPtr = members.GetHead();
 
