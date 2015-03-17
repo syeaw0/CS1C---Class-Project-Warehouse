@@ -1,0 +1,371 @@
+========================================
+	Warehouse ProtoType
+========================================
+0 - Exit
+1. Output Sales Report
+2. Search For Member Purchases
+3. Output Total Purchases
+4. Output Total Items Sold
+5. Output Prefferred Member Rebates
+6. Output All Member Info
+7. Output Inventory
+8. Output Total Purchases
+Enter your choice: 1
+
+
+********************************
+* SALES REPORT FOR 2/1/2015
+ *
+********************************
+
+ITEM      QUANTITY  COST      BUYER     
+---------- ---------- ---------- ----------
+1   .Envelopes5         2.99      
+2   .Envelopes5         2.99      
+3   .Paper Shredder1         199.99    
+4   .Instant Coffee5         6.75      
+5   .EPSON Printer Cart.5         32.50     
+6   .EPSON Printer20        59.99     
+7   .Most Basic DVD Player1         59.99     
+8   .The Alamo6         19.95     
+9   .Seinfeld Collection50        39.95     
+10  .Shrek 21         19.95     
+11  .Pork Tenderloin2         17.25     
+12  .Ground Beef1         6.85      
+13  .Rye Bread90        4.79      
+14  .1 gallon milk88        5.49      
+----------------------------------------
+
+TOTAL NUMBER OF MEMBERS
+-----------------------
+
+BASIC:     6
+PREFERRED: 6
+
+TOTAL REVENUE: $0.00
+
+
+========================================
+	Warehouse ProtoType
+========================================
+0 - Exit
+1. Output Sales Report
+2. Search For Member Purchases
+3. Output Total Purchases
+4. Output Total Items Sold
+5. Output Prefferred Member Rebates
+6. Output All Member Info
+7. Output Inventory
+8. Output Total Purchases
+Enter your choice: 2
+
+
+Enter the Id of the member you would like to search for: 
+
+12345
+**************************
+* MEMBER PURCHASE REPORT *
+**************************
+
+NAME: Sally ShopperID:   12345ITEM      QUANTITY  COST      
+---------- ---------- ----------
+6. 
+EPSON Printer20--------59.99-----
+9. 
+Seinfeld Collection50--------39.95-----
+14. 
+1 gallon milk88--------5.49------
+------------------------------
+
+TOTAL PURCHASES: 
+
+========================================
+	Warehouse ProtoType
+========================================
+0 - Exit
+1. Output Sales Report
+2. Search For Member Purchases
+3. Output Total Purchases
+4. Output Total Items Sold
+5. Output Prefferred Member Rebates
+6. Output All Member Info
+7. Output Inventory
+8. Output Total Purchases
+Enter your choice: 3
+
+
+   ID # 56723 PURCHASED:
+----------------------------------
+ITEM NAME: Envelopes
+ITEM NAME: Envelopes
+
+   ID # 56723 PURCHASED:
+----------------------------------
+ITEM NAME: Envelopes
+ITEM NAME: Envelopes
+
+   ID # 61616 PURCHASED:
+----------------------------------
+
+   ID # 16161 PURCHASED:
+----------------------------------
+
+   ID # 77777 PURCHASED:
+----------------------------------
+
+   ID # 12121 PURCHASED:
+----------------------------------
+
+   ID # 31311 PURCHASED:
+----------------------------------
+
+   ID # 35647 PURCHASED:
+----------------------------------
+
+   ID # 88888 PURCHASED:
+----------------------------------
+ITEM NAME: EPSON Printer Cart.
+
+   ID # 12899 PURCHASED:
+----------------------------------
+ITEM NAME: Paper Shredder
+ITEM NAME: Shrek 2
+ITEM NAME: Pork Tenderloin
+ITEM NAME: Ground Beef
+
+   ID # 67899 PURCHASED:
+----------------------------------
+ITEM NAME: Instant Coffee
+ITEM NAME: Most Basic DVD Player
+ITEM NAME: The Alamo
+ITEM NAME: Rye Bread
+
+   ID # 12345 PURCHASED:
+----------------------------------
+ITEM NAME: EPSON Printer
+ITEM NAME: Seinfeld Collection
+ITEM NAME: 1 gallon milk
+
+========================================
+	Warehouse ProtoType
+========================================
+0 - Exit
+1. Output Sales Report
+2. Search For Member Purchases
+3. Output Total Purchases
+4. Output Total Items Sold
+5. Output Prefferred Member Rebates
+6. Output All Member Info
+7. Output Inventory
+8. Output Total Purchases
+Enter your choice: 4
+
+
+========================================
+	Warehouse ProtoType
+========================================
+0 - Exit
+1. Output Sales Report
+2. Search For Member Purchases
+3. Output Total Purchases
+4. Output Total Items Sold
+5. Output Prefferred Member Rebates
+6. Output All Member Info
+7. Output Inventory
+8. Output Total Purchases
+Enter your choice: 5
+
+
+=====================================
+	Rebate Report
+=====================================
+ID:   56723	REBATE:
+ID:   56723	REBATE:
+ID:   61616	REBATE:
+ID:   16161	REBATE:
+ID:   77777	REBATE:
+ID:   12121	REBATE:
+ID:   31311	REBATE:
+ID:   35647	REBATE:
+ID:   88888	REBATE:
+ID:   12899	REBATE:
+ID:   67899	REBATE:
+ID:   12345	REBATE:
+
+========================================
+	Warehouse ProtoType
+========================================
+0 - Exit
+1. Output Sales Report
+2. Search For Member Purchases
+3. Output Total Purchases
+4. Output Total Items Sold
+5. Output Prefferred Member Rebates
+6. Output All Member Info
+7. Output Inventory
+8. Output Total Purchases
+Enter your choice: 6
+
+
+NAME: Sue Shoparound
+ID:   56723
+Membership   PREFERRED
+
+NAME: Sue Shoparound
+ID:   56723
+Membership   PREFERRED
+
+NAME: Tasha the Cat
+ID:   61616
+Membership   BASIC
+
+NAME: Benjamin Business
+ID:   16161
+Membership   BASIC
+
+NAME: Vern Video 
+ID:   77777
+Membership   PREFERRED
+
+NAME: Kathy Havealotsofkids
+ID:   12121
+Membership   BASIC
+
+NAME: Sam Single
+ID:   31311
+Membership   PREFERRED
+
+NAME: Linda Livesalone
+ID:   35647
+Membership   BASIC
+
+NAME: Larry Largefamily
+ID:   88888
+Membership   BASIC
+
+NAME: Betty Buysalot
+ID:   12899
+Membership   PREFERRED
+
+NAME: Fred Frugal
+ID:   67899
+Membership   PREFERRED
+
+NAME: Sally Shopper
+ID:   12345
+Membership   BASIC
+
+========================================
+	Warehouse ProtoType
+========================================
+0 - Exit
+1. Output Sales Report
+2. Search For Member Purchases
+3. Output Total Purchases
+4. Output Total Items Sold
+5. Output Prefferred Member Rebates
+6. Output All Member Info
+7. Output Inventory
+8. Output Total Purchases
+Enter your choice: 7
+
+
+ITEM NAME: Envelopes
+SHOPPER ID:   56723
+COST:   2.99
+QUANTITY:   5
+
+
+ITEM NAME: Envelopes
+SHOPPER ID:   56723
+COST:   2.99
+QUANTITY:   5
+
+
+ITEM NAME: Paper Shredder
+SHOPPER ID:   12899
+COST:   199.99
+QUANTITY:   1
+
+
+ITEM NAME: Instant Coffee
+SHOPPER ID:   67899
+COST:   6.75
+QUANTITY:   5
+
+
+ITEM NAME: EPSON Printer Cart.
+SHOPPER ID:   88888
+COST:   32.50
+QUANTITY:   5
+
+
+ITEM NAME: EPSON Printer
+SHOPPER ID:   12345
+COST:   59.99
+QUANTITY:   20
+
+
+ITEM NAME: Most Basic DVD Player
+SHOPPER ID:   67899
+COST:   59.99
+QUANTITY:   1
+
+
+ITEM NAME: The Alamo
+SHOPPER ID:   67899
+COST:   19.95
+QUANTITY:   6
+
+
+ITEM NAME: Seinfeld Collection
+SHOPPER ID:   12345
+COST:   39.95
+QUANTITY:   50
+
+
+ITEM NAME: Shrek 2
+SHOPPER ID:   12899
+COST:   19.95
+QUANTITY:   1
+
+
+ITEM NAME: Pork Tenderloin
+SHOPPER ID:   12899
+COST:   17.25
+QUANTITY:   2
+
+
+ITEM NAME: Ground Beef
+SHOPPER ID:   12899
+COST:   6.85
+QUANTITY:   1
+
+
+ITEM NAME: Rye Bread
+SHOPPER ID:   67899
+COST:   4.79
+QUANTITY:   90
+
+
+ITEM NAME: 1 gallon milk
+SHOPPER ID:   12345
+COST:   5.49
+QUANTITY:   88
+
+
+========================================
+	Warehouse ProtoType
+========================================
+0 - Exit
+1. Output Sales Report
+2. Search For Member Purchases
+3. Output Total Purchases
+4. Output Total Items Sold
+5. Output Prefferred Member Rebates
+6. Output All Member Info
+7. Output Inventory
+8. Output Total Purchases
+Enter your choice: 0
+
+
