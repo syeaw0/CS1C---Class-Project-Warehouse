@@ -26,9 +26,9 @@ const string MENU = "========================================\n"
 					"6.  Output Preferred Member Rebates\n"
 					"7.  Output Membership Dues\n"
 					"8.  Search For Membership Expirations \n"
-					"9.  Output All Members\n";
+					"9.  Output All Members\n"
 					"10. Output All Inventory\n"
-					"11. PrintAmountDueByMonthReport\n"
+					"11. PrintAmountDueByMonthReport\n";
 
 
 
