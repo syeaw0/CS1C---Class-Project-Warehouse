@@ -61,6 +61,8 @@ public:
 	void DeleteMember();
 
 	void PrintMembershipDues();
+	void DetermineBasicToPrefferred();
+	void DeterminePreferredToBasic();
 
 };
 

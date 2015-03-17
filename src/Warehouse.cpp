@@ -311,27 +311,36 @@ void Warehouse::PrintMemberPurchaseReport(int search)
 void Warehouse::PrintTotalSalesReport()
 {
 	Basic *memberPtr;
-	Item *perPtr;
+	Item *itemPtr;
 	Date datePtr;
+	bool matches;
 
 	memberPtr = members.GetHead();
 
 	while (memberPtr != NULL)
 	{
-		perPtr = inventory.GetHead();
+		itemPtr = inventory.GetHead();
+		matches = false;
 		cout << "   ID # " << memberPtr->GetId() << " PURCHASED:" << endl;
 		cout << "----------------------------------" << endl;
 
-		while (perPtr != NULL)
+		while (itemPtr != NULL)
 		{
-			if (perPtr->GetBuyerID() == memberPtr->GetId())
+			if (itemPtr->GetBuyerID() == memberPtr->GetId())
 			{
-				cout << "ITEM NAME: " << perPtr->GetName();
+				cout << "ITEM NAME: " << itemPtr->GetName();
 				cout << endl;
+				matches = true;
 			}
 
-			perPtr = perPtr->GetNextItem();
+			itemPtr = itemPtr->GetNextItem();
 		}
+
+		if(!matches)
+		{
+			cout << "Nothing was Purchased By this User..." << endl;
+		}
+
 		memberPtr = memberPtr->GetNext();
 		cout << endl;
 	}
@@ -343,6 +352,7 @@ void Warehouse::PrintItemSalesReport(string itemToSearch)
 	const int TITLE = 21;
 	Item *itemPtr = NULL;
 	bool itemFound;
+	bool stringEmpty;
 
 	cout << left;
 	cout << setfill('*');
@@ -354,8 +364,23 @@ void Warehouse::PrintItemSalesReport(string itemToSearch)
 
 	itemPtr = inventory.GetHead();
 	itemFound = false;
+	stringEmpty = true;
 
-	while (itemPtr != NULL && !itemFound)
+	do	//Error checking
+	{
+		if(itemToSearch.empty())
+		{
+			cout << "Please enter an item to search: ";
+			getline(cin, itemToSearch);
+		}
+		else
+		{
+			stringEmpty = false;
+		}
+	}while(stringEmpty);
+
+	//Searching for item
+	while(itemPtr!=NULL && !itemFound)
 	{
 		if (itemPtr->GetName() == itemToSearch)
 		{
@@ -366,11 +391,20 @@ void Warehouse::PrintItemSalesReport(string itemToSearch)
 			itemPtr = itemPtr->GetNextItem();
 		}
 	}
-	cout << setw(20 / 2) << itemPtr->GetName();
-	cout << "QUANTITY SOLD: " << itemPtr->GetQuantity() << endl;
-	cout << "TOTAL SALES: "
-			<< (float(itemPtr->GetQuantity()) * (itemPtr->GetPrice())) << endl
-			<< endl;
+
+	//IF ITEMPTR == NULL DON'T TRY TO ACCESS MEMBERS
+	if(itemPtr != NULL)
+	{
+	cout << setw(TITLE) << itemPtr->GetName()
+		 << " X " << itemPtr->GetQuantity();
+	cout << " = $" << (float(itemPtr->GetQuantity()) * (itemPtr->GetPrice()))
+		 << endl << endl;
+	}
+	else
+	{
+		cout << "No Item called: " << itemToSearch
+			 << " found!" << endl << endl;
+	}
 }
 
 //OBJECTIVE 7
@@ -378,12 +412,46 @@ void Warehouse::PrintMemberPaidPerYearReport()
 {
 	const int TITLE = 29;
 	const int MEMBER_TYPE = 11;
-	const int MEMBER_NAME = 10;
+	const int MEMBER_NAME = 22;
 	const int TOTAL_SPENT = 10;
 
+	struct MemberInfo
+	{
+		string memberName;
+		MemberType type;
+	};
+
+	MemberInfo memberArray[11];
 	Basic *perPtr;
 
-	perPtr = members.GetHead();
+	perPtr=members.GetHead();
+
+	int i=0;
+
+	    while(perPtr!=NULL)
+	    {
+	        memberArray[i].memberName =perPtr->GetName();
+	        memberArray[i].type = perPtr->GetMemberType();
+	        perPtr=perPtr->GetNext();
+	        i++;
+	    }
+
+
+	 int j;
+
+	 MemberInfo tmp;
+	 for (i = 0; i < 11; i++)
+	 {
+		 j = i;
+		 while (j > 0 && memberArray[j - 1].memberName > memberArray[j].memberName)
+		 {
+			 tmp = memberArray[j];
+			 memberArray[j] = memberArray[j - 1];
+			 memberArray[j - 1] = tmp;
+			 j--;
+		 }//end of while loop
+
+	 }//end of for loop
 
 	cout << left;
 	cout << setfill('*');
@@ -394,36 +462,48 @@ void Warehouse::PrintMemberPaidPerYearReport()
 	cout << endl;
 
 	cout << setw(MEMBER_TYPE) << "MEMBER TYPE   ";
-	cout << setw(MEMBER_NAME) << "MEMBER NAME  ";
-	cout << setw(TOTAL_SPENT) << "TOTAL SPENT";
+	cout << setw(MEMBER_NAME) << "MEMBER NAME";
+	cout << setw(TOTAL_SPENT) << "   TOTAL SPENT";
 	cout << endl;
 
 	cout << setfill('-');
 	cout << setw(MEMBER_TYPE) << '-' << "   ";
 	cout << setw(MEMBER_NAME) << '-' << "   ";
 	cout << setw(TOTAL_SPENT) << '-';
+	cout << setfill(' ');
 	cout << endl;
 
-	while (perPtr != NULL)
+	i=0;
+	perPtr = members.GetHead();
+
+	while (i < 11)
 	{
-
-		if (perPtr->GetMemberType() == BASIC)
+		if(memberArray[i].type == BASIC)
 		{
-			cout << setw(MEMBER_TYPE) << "Basic";
+			cout << setw(MEMBER_TYPE + 3) << "BASIC";
+			cout << setw(MEMBER_NAME) << memberArray[i].memberName;
+			cout << setw(TOTAL_SPENT) << "   $55.00";
+			cout << endl;
 		}
-		else if (perPtr->GetMemberType() == PREFERRED)
-		{
-			cout << setw(MEMBER_TYPE) << "Preferred";
-		}
-
-		cout << setw(MEMBER_NAME) << perPtr->GetName();
-		cout << setw(TOTAL_SPENT) << perPtr->GetTotalSpent();
-		cout << endl;
-
-		perPtr = perPtr->GetNext();
+		i++;
 	}
 
-	cout << right;
+	cout << endl;
+
+	i=0;
+	while (i < 11)
+	{
+		if(memberArray[i].type == PREFERRED)
+		{
+			cout << setw(MEMBER_TYPE + 3) << "PREFERRED";
+			cout << setw(MEMBER_NAME) << memberArray[i].memberName;
+			cout << setw(TOTAL_SPENT) << "   $95.00";
+			cout << endl;
+		}
+		i++;
+	}
+
+	cout << endl << right;
 
 }
 //OBJECTIVE 8
@@ -453,6 +533,7 @@ void Warehouse::PrintAmountDueByMonthReport(Date aDate)
 	cout << setw(MONTH) << '-' << "   ";
 	cout << setw(MEMBER_NAME) << '-' << "   ";
 	cout << setw(AMOUNT_DUE) << '-';
+	cout << setfill(' ');
 	cout << endl;
 
 	while (perPtr != NULL)
@@ -500,7 +581,6 @@ void Warehouse::PrintRebateReport()
 	cout << endl;
 }
 
-//Objective 5
 void Warehouse::PrintItemsSold()
 {
 	Item *itemPtr;
@@ -634,3 +714,164 @@ void Warehouse::PrintMembershipDues()
 	cout << endl << endl;
 }
 
+//Objective 10
+void Warehouse::DetermineBasicToPrefferred()
+{
+	const int TITLE = 27;
+
+    Basic *memberPtr;
+    Item  *itemPtr;
+    int numBasic = 0;
+    int i = 0;
+
+    struct MemberInfo
+    {
+    	string name;
+    	int id;
+    	float totalSpent;
+    };
+
+	cout << left;
+	cout << setfill('*');
+	cout << setw(TITLE) << '*' << endl;
+	cout << "* MEMBER ALERT: UPGRADE *" << endl;
+	cout << setw(TITLE) << '*' << endl;
+	cout << setfill(' ');
+	cout << endl;
+
+    memberPtr=members.GetHead();
+
+    //Initialize counter for member array
+    while(memberPtr != NULL)
+    {
+    	if(memberPtr->GetMemberType() == BASIC)
+    	{
+    		numBasic++;
+    	}
+    	memberPtr = memberPtr->GetNext();
+    }
+
+    MemberInfo memberArray[numBasic];
+    memberPtr = members.GetHead();
+
+    //Loading in Basic Member infos to struct
+    while(memberPtr != NULL)
+    {
+    	if(memberPtr->GetMemberType() == BASIC)
+		{
+			memberArray[i].name = memberPtr->GetName();
+			memberArray[i].id = memberPtr->GetId();
+			i++;
+		}
+    	memberPtr = memberPtr->GetNext();
+    }
+
+    memberPtr = members.GetHead();
+    itemPtr=inventory.GetHead();
+
+    //Load in totalSpent for each unique member
+    for(i = 0; i < numBasic; i++)
+    {
+    	while(itemPtr != NULL)
+    	{
+    		if(memberArray[i].id == itemPtr->GetBuyerID())
+    		{
+    			memberArray[i].totalSpent += itemPtr->GetPrice();
+    		}
+    		itemPtr = itemPtr->GetNextItem();
+    	}
+
+    	itemPtr = inventory.GetHead();
+    }
+
+    //Output if member should upgrade or not
+    for(i = 0; i < numBasic; i++)
+    {
+		if(memberArray[i].totalSpent > 100.00)
+		{
+			cout << "Member " << memberArray[i].name << ": Status "
+					"-> Upgrade to Preferred" << endl << endl;
+		}
+    }
+}
+
+//Objective 11
+void Warehouse::DeterminePreferredToBasic()
+{
+	const int TITLE = 29;
+
+    Basic *memberPtr;
+    Item  *itemPtr;
+    int numPref = 0;
+    int i = 0;
+
+    struct MemberInfo
+    {
+    	string name;
+    	int id;
+    	float totalSpent;
+    };
+
+	cout << left;
+	cout << setfill('*');
+	cout << setw(TITLE) << '*' << endl;
+	cout << "* MEMBER ALERT: DOWNGRADE *" << endl;
+	cout << setw(TITLE) << '*' << endl;
+	cout << setfill(' ');
+	cout << endl;
+
+    memberPtr=members.GetHead();
+
+    //Initialize counter for member array
+    while(memberPtr != NULL)
+    {
+    	if(memberPtr->GetMemberType() == PREFERRED)
+    	{
+    		numPref++;
+    	}
+    	memberPtr = memberPtr->GetNext();
+    }
+
+    MemberInfo memberArray[numPref];
+    memberPtr = members.GetHead();
+
+    //Loading in Preferred Member infos to struct
+    while(memberPtr != NULL)
+    {
+    	if(memberPtr->GetMemberType() == PREFERRED)
+		{
+			memberArray[i].name = memberPtr->GetName();
+			memberArray[i].id = memberPtr->GetId();
+			i++;
+		}
+    	memberPtr = memberPtr->GetNext();
+    }
+
+    memberPtr = members.GetHead();
+    itemPtr=inventory.GetHead();
+
+    //Load in totalSpent for each unique member
+    for(i = 0; i < numPref; i++)
+    {
+    	while(itemPtr != NULL)
+    	{
+    		if(memberArray[i].id == itemPtr->GetBuyerID())
+    		{
+    			memberArray[i].totalSpent += itemPtr->GetPrice();
+    		}
+    		itemPtr = itemPtr->GetNextItem();
+    	}
+
+    	itemPtr = inventory.GetHead();
+    }
+
+    //Output if member should upgrade or not
+    for(i = 0; i < numPref; i++)
+    {
+		if(memberArray[i].totalSpent <= 100.00)
+		{
+			cout << "Member " << memberArray[i].name << ": Status "
+					"-> Downgrade to Basic" << endl << endl;
+		}
+    }
+}
