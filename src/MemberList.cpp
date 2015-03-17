@@ -77,21 +77,36 @@ void MemberList::CreateList(ifstream &inFile)
 //Removing from Middle
 //Removing from Last
 
-//void MemberList::DeleteMember(Basic* deleteMember)
-//{
-//
-//	 MemberList* memberPtr;
-//	 memberPtr = head;
-//
-//	 if (head !=NULL )
-//	 {
-//		 memberPtr = memberPtr -> next;
-//		 head = memberPtr;
-//	 }
-//
-//	delete memberPtr;
-//
-//}
+void MemberList::DeleteMember(Basic* deleteMember)
+{
+
+	 Basic* memberPtr;
+
+	 memberPtr = head;
+
+	 if(memberPtr->GetName() == deleteMember->GetName())
+	 {
+		 head = head->GetNext();
+	 }
+
+	 while(memberPtr->GetNext() != NULL)
+	 {
+		 if(memberPtr->GetNext()->GetName() == deleteMember->GetName())
+		 {
+			 memberPtr->SetNext(deleteMember->GetNext());
+			 delete deleteMember;
+		 }
+	 }
+
+	delete memberPtr;
+
+}
+
+void  MemberList::AddMember(Basic* aMember)
+{
+	aMember->SetNext(head);
+	head = aMember;
+}
 
 Basic *MemberList::SearchMember(int userId)
 {
@@ -104,6 +119,29 @@ Basic *MemberList::SearchMember(int userId)
 	while(memberPtr != NULL && !found)
 	{
 		if(memberPtr->GetId() == userId)
+		{
+			found = true;
+		}
+		else
+		{
+			memberPtr	= memberPtr->GetNext();
+		}
+	}
+
+	return memberPtr;
+}
+
+Basic *MemberList::SearchMember(string aName)
+{
+	Basic* 	memberPtr;
+	bool	found;
+
+	memberPtr	= head;
+	found		= false;
+
+	while(memberPtr != NULL && !found)
+	{
+		if(memberPtr->GetName() == aName)
 		{
 			found = true;
 		}

@@ -36,32 +36,6 @@ void Warehouse::LoadItems(ifstream &inFile)
 	inventory.ReadInFile(inFile);
 }
 
-void Warehouse::AddMember()
-{
-	// CONSTANT DECLARATIONS
-	const int SPACING = 17;
-	string name;
-	int id;
-	string expiration;
-
-	cout << "You have chosen to create a new member.\n";
-	cout << "Please enter the following information about the new member\n";
-
-	cout << left;
-	cout << setw(SPACING) << "NAME:";
-	getline(cin, name);
-
-	cout << setw(SPACING) << "ID:   ";
-	cin >> id;
-
-	cout << setw(SPACING) << "EXPIRATION DATE:" << "(mm/dd/yyyy)";
-	getline(cin, expiration);
-
-	// ERROR TESTING !!!!!!!!!!!!!!!!!
-
-	cout << right;
-}
-
 /*************************************************
  * PrintSalesReport
  * -----------------------------------------------
@@ -90,11 +64,10 @@ void Warehouse::PrintSalesReport(Date aDate) //OBJECTIVE 1
 	int totalBasic;
 	int totalPreferred;
 	float totalRevenue;
-	bool noItemsPurchased;
+	bool  noItemsPurchased;
 	Basic* aMember;
 	Item* itemPtr;
 	Date datePtr;
-
 
 	// VARIABLE INITIALIZATION
 	totalBasic = 0;
@@ -135,7 +108,7 @@ void Warehouse::PrintSalesReport(Date aDate) //OBJECTIVE 1
 
 	while (itemPtr != NULL)
 	{
-		if(index < 10)
+		if (index < 10)
 		{
 			cout << index << ".  ";
 		}
@@ -148,14 +121,21 @@ void Warehouse::PrintSalesReport(Date aDate) //OBJECTIVE 1
 		cout << '$';
 		cout << setw(COST) << itemPtr->GetPrice();
 
-		aMember	= members.SearchMember(itemPtr->GetBuyerID());
+		aMember = members.SearchMember(itemPtr->GetBuyerID());
 		cout << aMember->GetName();
 
 		totalRevenue += itemPtr->GetPrice() * itemPtr->GetQuantity();
 
+		noItemsPurchased = false;
+
 		itemPtr = itemPtr->GetNextItem();
 		cout << endl;
 		index++;
+	}
+
+	if(noItemsPurchased)
+	{
+		cout << "<NO ITEMS PURCHASED>\n";
 	}
 
 	cout << setfill('-');
@@ -168,17 +148,17 @@ void Warehouse::PrintSalesReport(Date aDate) //OBJECTIVE 1
 	cout << endl;
 
 	aMember = members.GetHead();
-	while(aMember != NULL)
+	while (aMember != NULL)
 	{
-	if(aMember->GetMemberType() == 0)
-	{
-		totalBasic++;
-	}
-	else
-	{
-		totalPreferred++;
-	}
-	aMember = aMember->GetNext();
+		if (aMember->GetMemberType() == 0)
+		{
+			totalBasic++;
+		}
+		else
+		{
+			totalPreferred++;
+		}
+		aMember = aMember->GetNext();
 	}
 
 	cout << "BASIC:     " << totalBasic << endl;
@@ -191,43 +171,43 @@ void Warehouse::PrintSalesReport(Date aDate) //OBJECTIVE 1
 	cout << right;
 }
 //Output All Members (Non-objective)
-void Warehouse :: OutputMembers()
+void Warehouse::OutputMembers()
 {
 	Basic *memberPtr;
 	//Date datePtr;
 
 	memberPtr = members.GetHead();
 
-	while(memberPtr != NULL)
+	while (memberPtr != NULL)
 	{
-	cout << "NAME: " <<  memberPtr->GetName() << endl;
-	cout << "ID:   " << memberPtr->GetId() << endl;
-	//cout << "Expiration: " << datePtr.GetDay() << endl;
-	cout << "Membership   ";
-	if(memberPtr->GetMemberType() == 0)
-	{
-		cout << "BASIC";
-	}
-	else
-	{
-		cout << "PREFERRED";
-	}
-	cout << endl << endl;
-	memberPtr = memberPtr->GetNext();
+		cout << "NAME: " << memberPtr->GetName() << endl;
+		cout << "ID:   " << memberPtr->GetId() << endl;
+		//cout << "Expiration: " << datePtr.GetDay() << endl;
+		cout << "Membership   ";
+		if (memberPtr->GetMemberType() == 0)
+		{
+			cout << "BASIC";
+		}
+		else
+		{
+			cout << "PREFERRED";
+		}
+		cout << endl << endl;
+		memberPtr = memberPtr->GetNext();
 	}
 
 }
 //Outputs Entire Item list from Inventory (Non-objective)
-void Warehouse :: OutputInventory()
+void Warehouse::OutputInventory()
 {
 	Item* itemPtr;
 	//Date datePtr;
 
 	itemPtr = inventory.GetHead();
 
-	while(itemPtr != NULL)
+	while (itemPtr != NULL)
 	{
-		cout << "ITEM NAME: " <<  itemPtr->GetName() << endl;
+		cout << "ITEM NAME: " << itemPtr->GetName() << endl;
 		cout << "SHOPPER ID:   " << itemPtr->GetBuyerID() << endl;
 		cout << "COST:   " << itemPtr->GetPrice() << endl;
 		cout << "QUANTITY:   " << itemPtr->GetQuantity() << endl;
@@ -266,7 +246,7 @@ void Warehouse::PrintMemberPurchaseReport(int search)
 	memberPtr = members.SearchMember(search);
 
 	cout << "NAME: " << memberPtr->GetName() << endl;
-	cout << "ID:   " << memberPtr->GetId()	 << endl << endl;
+	cout << "ID:   " << memberPtr->GetId() << endl << endl;
 
 	cout << setw(ITEM + 1) << "ITEM";
 	cout << setw(QUANTITY + 1) << "QUANTITY";
@@ -290,7 +270,7 @@ void Warehouse::PrintMemberPurchaseReport(int search)
 	{
 		if (perPtr->GetBuyerID() == memberPtr->GetId())
 		{
-			if(index < 10)
+			if (index < 10)
 			{
 				cout << index << ".  ";
 			}
@@ -298,9 +278,9 @@ void Warehouse::PrintMemberPurchaseReport(int search)
 			{
 				cout << index << ". ";
 			}
-			cout << setw(ITEM - 3) 		<< perPtr->GetName();
-			cout << setw(QUANTITY + 1)  << perPtr->GetQuantity();
-			cout << setw(COST) 			<< perPtr->GetPrice();
+			cout << setw(ITEM - 3) << perPtr->GetName();
+			cout << setw(QUANTITY + 1) << perPtr->GetQuantity();
+			cout << setw(COST) << perPtr->GetPrice();
 			cout << endl;
 
 			totalPurchases++;
@@ -336,7 +316,7 @@ void Warehouse::PrintTotalSalesReport()
 
 	memberPtr = members.GetHead();
 
-	while(memberPtr != NULL)
+	while (memberPtr != NULL)
 	{
 		perPtr = inventory.GetHead();
 		cout << "   ID # " << memberPtr->GetId() << " PURCHASED:" << endl;
@@ -362,7 +342,6 @@ void Warehouse::PrintItemSalesReport(string itemToSearch)
 {
 	const int TITLE = 21;
 	Item *itemPtr = NULL;
-	int totalSold = 0;
 	bool itemFound;
 
 	cout << left;
@@ -376,9 +355,9 @@ void Warehouse::PrintItemSalesReport(string itemToSearch)
 	itemPtr = inventory.GetHead();
 	itemFound = false;
 
-	while(itemPtr!=NULL && !itemFound)
+	while (itemPtr != NULL && !itemFound)
 	{
-		if(itemPtr->GetName() == itemToSearch)
+		if (itemPtr->GetName() == itemToSearch)
 		{
 			itemFound = true;
 		}
@@ -388,12 +367,11 @@ void Warehouse::PrintItemSalesReport(string itemToSearch)
 		}
 	}
 	cout << setw(20 / 2) << itemPtr->GetName();
-	cout <<  "QUANTITY SOLD: " << itemPtr->GetQuantity() << endl;
-	cout <<	 "TOTAL SALES: "
-	<< (float(itemPtr->GetQuantity()) * (itemPtr->GetPrice()))
-	<< endl << endl;
+	cout << "QUANTITY SOLD: " << itemPtr->GetQuantity() << endl;
+	cout << "TOTAL SALES: "
+			<< (float(itemPtr->GetQuantity()) * (itemPtr->GetPrice())) << endl
+			<< endl;
 }
-
 
 //OBJECTIVE 7
 void Warehouse::PrintMemberPaidPerYearReport()
@@ -507,13 +485,12 @@ void Warehouse::PrintRebateReport()
 	Basic *memberPtr;
 	Date datePtr;
 
-	cout << "=====================================" << endl <<
-			"	Rebate Report" << endl <<
-			"=====================================" << endl;
+	cout << "=====================================" << endl << "	Rebate Report"
+			<< endl << "=====================================" << endl;
 	memberPtr = members.GetHead();
-	while(memberPtr != NULL)
+	while (memberPtr != NULL)
 	{
-		if(memberPtr->GetMemberType() == PREFERRED)
+		if (memberPtr->GetMemberType() == PREFERRED)
 		{
 			cout << "ID:   " << memberPtr->GetId() << "	REBATE:" << endl;
 			cout << "";
@@ -529,18 +506,90 @@ void Warehouse::PrintItemsSold()
 	Item *itemPtr;
 	Date datePtr;
 
-	cout << "=====================================" << endl <<
-			"	Items Sold" << endl <<
-			"=====================================" << endl;
+	cout << "=====================================" << endl << "	Items Sold"
+			<< endl << "=====================================" << endl;
 	itemPtr = inventory.GetHead();
-	while(itemPtr != NULL)
+	while (itemPtr != NULL)
 	{
-			cout << "ITEM NAME:   " << itemPtr->GetName();
-			cout  << "Quantity: " << itemPtr->GetQuantity() << endl;
+		cout << "ITEM NAME:   " << itemPtr->GetName();
+		cout << "Quantity: " << itemPtr->GetQuantity() << endl;
 
 		itemPtr = itemPtr->GetNextItem();
 	}
 	cout << endl;
+}
+
+void Warehouse::AddMember()
+{
+	string name;
+	int id;
+	int day;
+	int month;
+	int year;
+	string memberType;
+	Basic* memberPtr;
+	Date   aDate;
+
+	cout << "What is the name of the new member? ";
+	getline(cin, name);
+	cout << endl;
+
+	cout << "What is their id? ";
+	cin  >> id;
+	cout << endl;
+
+	cout << "What is the date of their expiration?\n";
+	cout << "Day:   ";
+	cin  >> day;
+	cout << endl;
+
+	cout << "Month: ";
+	cin  >> month;
+	cout << endl;
+
+	cout << "Year:  ";
+	cin  >> year;
+	cout << endl;
+
+	cout << "What type of member are you adding (Basic/Preferred): ";
+	getline(cin, memberType);
+	cout << endl;
+
+	memberPtr	= NULL;
+	if(memberType == "Basic")
+	{
+		memberPtr	= new Basic;
+	}
+	else
+	{
+		memberPtr 	= new Preferred;
+	}
+
+	memberPtr->SetName(name);
+	memberPtr->SetId(id);
+	aDate.SetDate(day, month, year);
+	memberPtr->SetExpiration(aDate);
+
+	members.AddMember(memberPtr);
+
+	cout << memberPtr->GetName() << " has been added.\n\n";
+
+
+}
+
+void Warehouse::DeleteMember()
+{
+	Basic* delPtr;
+	string name;
+
+	cout << "Which member would you like to delete? ";
+	getline(cin, name);
+	cout << endl;
+
+	delPtr = members.SearchMember(name);
+	members.DeleteMember(delPtr);
+
+	cout << name << " has been deleted\n\n";
 }
 
 void Warehouse::PrintMembershipDues()
@@ -550,13 +599,13 @@ void Warehouse::PrintMembershipDues()
 
 	memberPtr = members.GetHead();
 
-	cout << "=====================================" << endl <<
-	"	MEMBERSHIP DUES\n" << endl <<
-	"=====================================" << endl;
+	cout << "=====================================" << endl
+			<< "	MEMBERSHIP DUES\n" << endl
+			<< "=====================================" << endl;
 
-	while(memberPtr != NULL)
+	while (memberPtr != NULL)
 	{
-		if(memberPtr->GetMemberType() == PREFERRED)
+		if (memberPtr->GetMemberType() == PREFERRED)
 		{
 			cout << "MEMBER TYPE: PREFERRED" << endl;
 			cout << "NAME: " << memberPtr->GetName() << endl;
@@ -570,9 +619,9 @@ void Warehouse::PrintMembershipDues()
 
 	memberPtr = members.GetHead();
 
-	while(memberPtr != NULL)
+	while (memberPtr != NULL)
 	{
-		if(memberPtr->GetMemberType() == BASIC)
+		if (memberPtr->GetMemberType() == BASIC)
 		{
 			cout << "MEMBER TYPE: BASIC" << endl;
 			cout << "NAME: " << memberPtr->GetName() << endl;
