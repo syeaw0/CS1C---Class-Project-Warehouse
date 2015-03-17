@@ -48,7 +48,7 @@ void Item::SetDatePurchased(Date aDate)
 
 void Item::SetNextItem(Item *nextNode)
 {
-	nextItemPtr = nextNode;		//TODO fix method if necessary
+	nextItemPtr = nextNode;
 }
 
 //***Accessors***

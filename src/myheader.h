@@ -31,6 +31,9 @@ const string MENU = "========================================\n"
 					"11. PrintAmountDueByMonthReport\n"
 					"12. Add a New Member\n"
 					"13. Delete a Member\n";
+					"14. PrintMemberPaidPerYearReport\n"
+					"15. DetermineBasicToPreferred\n"
+					"16. DeterminePreferredToBasic\n";
 
 
 

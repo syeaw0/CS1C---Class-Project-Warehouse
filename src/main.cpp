@@ -83,6 +83,15 @@ int main()
 							break;
 		case 13:			warehouse.DeleteMember();
 							break;
+
+		case 14:			warehouse.PrintMemberPaidPerYearReport();
+							break;
+
+		case 15:			warehouse.DetermineBasicToPrefferred();
+							break;
+
+		case 16:			warehouse.DeterminePreferredToBasic();
+							break;
 		default:			break;
 		}
 	}while(choice != 0);

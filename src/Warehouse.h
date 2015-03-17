@@ -62,7 +62,8 @@ public:
 	void PrintItemsSold();
 	void PrintMembershipDues();
 	int  InputErrorCheck(string prompt);
-
+	void DetermineBasicToPrefferred();
+	void DeterminePreferredToBasic();
 };
 
 #endif /* WAREHOUSE_H_ */
