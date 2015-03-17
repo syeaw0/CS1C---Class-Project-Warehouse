@@ -42,7 +42,6 @@ void Inventory::ReadInFile(ifstream &inFile)
 	string itemName;
 	float cost;
 	int quantity;
-	int i;
 
 	itemPtr = new Item;
 	while(!inFile.eof() && itemPtr != NULL)

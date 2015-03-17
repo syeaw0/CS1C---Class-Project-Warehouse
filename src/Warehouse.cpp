@@ -230,8 +230,30 @@ void Warehouse::PrintMemberPurchaseReport(int search)
 	int index;
 	int totalPurchases;
 	bool noItemsPurchased;
+	bool badId;
 	Item* perPtr;
 	Basic *memberPtr;
+
+	do
+	{
+		memberPtr = members.GetHead();
+		badId = true;
+		while(memberPtr != NULL && badId)
+		{
+			if(memberPtr->GetId() == search)
+			{
+				badId = false;
+			}
+
+			memberPtr = memberPtr->GetNext();
+		}
+
+		if(badId)
+		{
+			cout << "**** Invalid ID ****\n\n";
+			search = InputErrorCheck("Please enter a valid ID: ");
+		}
+	}while(badId);
 
 	// OUTPUT TITLE
 	cout << left;
@@ -259,6 +281,7 @@ void Warehouse::PrintMemberPurchaseReport(int search)
 	cout << setw(COST) << '-';
 	cout << setfill(' ');
 	cout << endl;
+
 
 	// Loop for Purchases
 	index = 1;
